@@ -1,10 +1,14 @@
 
 <nb-card class="form-cont">
+  <nb-card-header>
+    <button mat-raised-button (click)="addContact($event)"><mat-icon>note_add</mat-icon> Add Contact</button>
+  </nb-card-header>
   <nb-card-body>
 
+  <div class="form-block" *ngFor="let contact of contacts" [@fadeIn]>
     <div class="row">
 
-
+      <span>{{ contact.ageMonth }}</span>
       <div class="col-md-4 col-lg-4">
         <mat-form-field appearance="fill" class="form-a">
           <mat-label>{{ t.fa.serialNumber | translate }}</mat-label>
@@ -45,9 +49,11 @@
       </div>
 
     </div>
+    <hr>
+  </div>
 
-    </nb-card-body>
-    </nb-card>
+  </nb-card-body>
+</nb-card>
 
 
 

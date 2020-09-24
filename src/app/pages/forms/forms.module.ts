@@ -1,5 +1,3 @@
-
-
 import { NgModule } from '@angular/core';
 import { FormsModule as ngFormsModule, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
@@ -57,6 +55,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormAStepSixComponent } from './form-a/form-a-step-six/form-a-step-six.component';
 import { FormAStepSevenComponent } from './form-a/form-a-step-seven/form-a-step-seven.component';
@@ -76,6 +75,7 @@ const MaterialModules = [
   MatRadioModule,
   MatButtonModule,
   MatButtonToggleModule,
+  MatIconModule,
 ];
 
 @NgModule({

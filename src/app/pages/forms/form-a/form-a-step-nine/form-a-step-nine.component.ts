@@ -1,16 +1,57 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  trigger,
+  transition,
+  style,
+  animate
+} from '@angular/animations';
+
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 
 @Component({
   selector: 'cov-form-a-step-nine',
   templateUrl: './form-a-step-nine.component.html',
-  styleUrls: ['./form-a-step-nine.component.scss']
+  styleUrls: ['./form-a-step-nine.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('.5s ease-in', style( {
+          opacity: '1',
+          transform: 'translateY(0%)'
+        })),
+      ]),
+    ]),
+  ],
 })
 export class FormAStepNineComponent implements OnInit {
 
+  contacts = [
+    {
+      sno: "",
+      fname: "",
+      lname: "",
+      gender: "",
+      ageYear: 0,
+      ageMonth: 0,
+    }
+  ];
   constructor(public t: TranslationServiceEn) { }
 
   ngOnInit(): void {
+  }
+
+  addContact(event): void {
+    this.contacts.unshift({
+      sno: "",
+      fname: "",
+      lname: "",
+      gender: "",
+      ageYear: 0,
+      ageMonth: 0,
+    });
+
+    console.log(event);
   }
 
 
