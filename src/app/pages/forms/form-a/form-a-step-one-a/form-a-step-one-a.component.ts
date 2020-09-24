@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { COUNTRIES } from '../../../../@core/data/countries.geo';
 import { PROVINCES } from '../../../../@core/data/province-districts.geo';
+import { DISTRICTS } from '../../../../@core/data/district-municipals.geo';
+import { MUNICIPALITIES } from '../../../../@core/data/municipal-wards.geo';
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 @Component({
   selector: 'cov-form-a-step-one-a',
@@ -12,12 +14,16 @@ export class FormAStepOneAComponent implements OnInit {
   countries: string[];
   countryProvinces: string[];
   districts: any [];
+  municipals: any [];
+  wards: any [];
 
   constructor(public t: TranslationServiceEn) { }
 
   ngOnInit(): void {
     this.countries = COUNTRIES;
     this.countryProvinces = PROVINCES?.map(province => province.name);
+    this.municipals = DISTRICTS?.map(district => district.name);
+    this.wards = MUNICIPALITIES?.map(municip => municip.name);
   }
 
 
@@ -27,7 +33,6 @@ export class FormAStepOneAComponent implements OnInit {
 
 
   provinceChanged(event: any) {
-
     const prov = PROVINCES.filter(obj => {
       return obj.name === event;
     });
@@ -37,7 +42,20 @@ export class FormAStepOneAComponent implements OnInit {
 
 
   districtChanged(event: any) {
-    // TODO check and remove
+    const dist = DISTRICTS.filter(obj => {
+      return obj.name === event;
+    });
+
+    this.municipals = dist[0].municipals;
+  }
+
+
+  municipChanged(event: any) {
+    const municip = MUNICIPALITIES.filter(obj => {
+      return obj.name === event;
+    });
+
+    this.wards = municip[0].wards;
   }
 
 

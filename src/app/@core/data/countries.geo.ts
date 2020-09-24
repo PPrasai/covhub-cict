@@ -120,6 +120,7 @@ export const COUNTRIES = [
   'Myanmar (fmr. Burma)',
   'Namibia',
   'Nauru',
+  'Nepal',
   'Netherlands',
   'New Zealand',
   'Nicaragua',
