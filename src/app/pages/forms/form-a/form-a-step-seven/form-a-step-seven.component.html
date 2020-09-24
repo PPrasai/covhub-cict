@@ -70,7 +70,7 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label> {{ t.fa.transport | translate}} </mat-label>
+        <label for="" class="label" style="color:black"> {{ t.fa.transport | translate}} </label>
       </div>
       <div class="form-group">
         <mat-label>
@@ -88,14 +88,14 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label>यभद छ भने,केमा यािा गरेको िोीः</mat-label>
+        <mat-label>{{ t.fa.ifYesWhichTransport | translate }}</mat-label>
         <div class="col-sm-6">
           <nb-radio-group id="inputCaseStatus" name="which-public-transport" class="row">
-            <nb-radio>प्लेन</nb-radio>
-            <nb-radio>याक्सी</nb-radio>
-            <nb-radio>बस/ माइक्रो</nb-radio>
-            <nb-radio>िक</nb-radio>
-            <nb-radio>अन्य</nb-radio>
+            <nb-radio>{{ t.fa.plane | translate }}</nb-radio>
+            <nb-radio>{{ t.fa.taxi | translate }}</nb-radio>
+            <nb-radio>{{ t.fa.bus | translate }}/{{ t.fa.micro | translate }}</nb-radio>
+            <nb-radio>{{ t.fa.bike | translate }}</nb-radio>
+            <nb-radio>{{ t.fa.other | translate }}</nb-radio>
 
           </nb-radio-group>
         </div>
@@ -192,12 +192,11 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label> {{ t.fa.officeOrClassroom | translate }}</mat-label>
+        <label for="" class="label" style="color:black"> {{ t.fa.officeOrClassroom | translate }}</label>
 
       </div>
       <div class="form-group">
-        <mat-label>
-          के के स भवद्यालय/ कायाषलय गएको छ?</mat-label>
+        <mat-label>{{ t.fa.caseGoneToSchoolOffice | translate }}</mat-label>
         <div class="col-sm-6">
           <nb-radio-group id="inputCaseStatus" name="visit-school-or-work" class="row">
             <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
@@ -244,13 +243,11 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label> {{ t.fa.someClosedEnv | translate }}</mat-label>
+        <label class="label" style="color: black;"> {{ t.fa.someClosedEnv | translate }}</label>
 
       </div>
       <div class="form-group">
-        <mat-label>
-          के के सले कसैसाँग अन्य बन्द वातावरणिरुमा (क्वारानिाइन, िोिल/
-          रेिुरेन्ट नभजकको सम्पकष मा कोिी आएका छ?</mat-label>
+        <mat-label>{{ t.fa.hotelResturantCaseContact | translate }}</mat-label>
         <div class="col-sm-6">
           <nb-radio-group id="inputCaseStatus" name="in-close-proximity-enclosed-space" class="row">
             <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
@@ -274,7 +271,7 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label> {{ t.fa.someContact2 | translate }}</mat-label>
+        <label class="label" style="color: black;"> {{ t.fa.someContact2 | translate }}</label>
 
       </div>
       <div class="form-group">
@@ -303,12 +300,11 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label> {{ t.fa.someContact4 | translate }}</mat-label>
+        <label class="label" style="color: black;"> {{ t.fa.someContact4 | translate }}</label>
 
       </div>
       <div class="form-group">
-        <mat-label>
-          के के स कु नै सामाभजक कायषक्रम/भोज/ हुलमुल/ धामीकसेवािरुमा समावेश हुन गएको छ ?</mat-label>
+        <mat-label>{{ t.fa.caseInProgramCrowdReligious | translate }}</mat-label>
         <div class="col-sm-6">
           <nb-radio-group id="inputCaseStatus" name="case-in-party" class="row">
             <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
@@ -322,8 +318,7 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label> यभद छ भने, सामाभजक कायषक्रम/ संयोजकको नामिरु उल्लेि
-          गनुषिोस्</mat-label>
+        <mat-label>{{ t.fa.namesOfOrganizer | translate }}</mat-label>
       </div>
     </div>
 
@@ -364,8 +359,7 @@
 
     <div class="col-md-12">
       <div class="form-group">
-        <mat-label>
-          भाग छ मा एक वा धेरै कन्टयाक्टिरु पत्ता लागेका छन् भक छैनन् ?</mat-label>
+        <mat-label>{{ t.fa.oneOrMoreContactKnown | translate }}</mat-label>
         <div class="col-sm-6">
           <nb-radio-group id="inputCaseStatus" name="one-or-more-contact" class="row">
             <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
