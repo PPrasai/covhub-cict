@@ -130,7 +130,11 @@
     "security":"सेक्युररिी",
     "hotelResturant":"िोिेल/ रेिुरेन्ट/ बारिरु",
     "garbageCollection":"फोिर व्यवस्थापनको काम गने",
-    "name":"नामः"
+    "name":"नामः",
+    "anyoneElseInCaseHouse": "केस बसेको घरमा अरु कोही बसेको छ ? ",
+    "anyoneInHouseInServiceOfCase": "घरमा केसलाई कसैले प्रत्यक्ष सेवा प्रदान गरेको छ ?",
+    "healthWorkerServeCase": "के केसलाई स्वास्थकर्मिद्वारा प्रत्यक्ष स्वास्थ्य सेवा प्रदान भदएको छ ?",
+    "caseInPublicTransport": "के केसले कुनै सार्वजनिक यातायातको साधनमा यात्रा गरेको छ ?"
   },
 
     "fb": {
