@@ -1,57 +1,109 @@
 
 <nb-card class="form-cont">
+
   <nb-card-header>
     <button mat-raised-button (click)="addContact($event)"><mat-icon>note_add</mat-icon> Add Contact</button>
   </nb-card-header>
+
   <nb-card-body>
+    <div class="form-block" *ngFor="let contact of contacts" [@fadeIn] style="padding-bottom: 2em;">
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fa.serialNumber | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.sno">
+          </mat-form-field>
+        </div>
 
-  <div class="form-block" *ngFor="let contact of contacts" [@fadeIn]>
-    <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fa.fname | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.fname">
+          </mat-form-field>
+        </div>
 
-      <span>{{ contact.ageMonth }}</span>
-      <div class="col-md-4 col-lg-4">
-        <mat-form-field appearance="fill" class="form-a">
-          <mat-label>{{ t.fa.serialNumber | translate }}</mat-label>
-          <input matInput autocomplete="off">
-          <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
-        </mat-form-field>
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fa.lname | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.lname">
+          </mat-form-field>
+        </div>
       </div>
 
-      <div class="col-md-4 col-lg-4">
-        <mat-form-field appearance="fill" class="form-a">
-          <mat-label> {{ t.fa.serialNumberValid | translate }} </mat-label>
-          <input matInput placeholder="दिन/महिना/वर्ष">
-        </mat-form-field>
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fb.gender | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.gender">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fb.contactAge | translate }}</mat-label>
+            <input matInput autocomplete="off" placeholder="बर्ष/महिना" [(ngModel)]="contact.age">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fb.caseRelation | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.caseRelation">
+          </mat-form-field>
+        </div>
       </div>
 
-      <div class="col-md-4 col-lg-4">
-        <mat-form-field appearance="fill" class="form-a">
-          <mat-label> {{ t.fa.organization | translate }} </mat-label>
-          <input matInput placeholder="दिन/महिना/वर्ष">
-        </mat-form-field>
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fa.contactWhereLastMeet | translate }}</mat-label>
+            <mat-select [(value)]="contact.contactMeetLocation">
+              <mat-option [value]="meetLocation.HOME">{{ meetLocation.HOME }}</mat-option>
+              <mat-option [value]="meetLocation.TRANSPORT">{{ meetLocation.TRANSPORT }}</mat-option>
+              <mat-option [value]="meetLocation.HOSPITAL">{{ meetLocation.HOSPITAL }}</mat-option>
+              <mat-option [value]="meetLocation.SCHOOL">{{ meetLocation.SCHOOL }}</mat-option>
+              <mat-option [value]="meetLocation.OFFICE">{{ meetLocation.OFFICE }}</mat-option>
+              <mat-option [value]="meetLocation.CROWD">{{ meetLocation.CROWD }}</mat-option>
+              <mat-option [value]="meetLocation.OTHER">{{ meetLocation.OTHER }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fa.contactWhenLastMeet | translate }}</mat-label>
+            <input matInput autocomplete="off" placeholder="दिन/बर्ष/महिना" [(ngModel)]="contact.age">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fa.contactIntimacy | translate }}</mat-label>
+            <mat-select [(value)]="contact.contactType">
+              <mat-option [value]="contactIntimacy.CLOSE">{{ contactIntimacy.CLOSE }}</mat-option>
+              <mat-option [value]="contactIntimacy.CASUAL">{{ contactIntimacy.CASUAL }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fb.address | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.contactAddress">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label>{{ t.fb.phoneNumber | translate }}</mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="contact.contactPhone">
+          </mat-form-field>
+        </div>
+      </div>
+      <hr>
     </div>
-
-    <div class="row">
-
-      <div class="col-md-4 col-lg-4">
-        <mat-form-field appearance="fill" class="form-a">
-          <mat-label> {{ t.fab.email | translate }} </mat-label>
-          <input matInput placeholder="दिन/महिना/वर्ष">
-        </mat-form-field>
-      </div>
-
-      <div class="col-md-4 col-lg-4">
-        <mat-form-field appearance="fill" class="form-a">
-          <mat-label> {{ t.fa.formSubmittedDate | translate }} </mat-label>
-          <input matInput placeholder="दिन/महिना/वर्ष">
-        </mat-form-field>
-      </div>
-
-    </div>
-    <hr>
-  </div>
-
   </nb-card-body>
 </nb-card>
 

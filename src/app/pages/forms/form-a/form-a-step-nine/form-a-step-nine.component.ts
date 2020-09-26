@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  transition,
-  style,
-  animate
-} from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
+
+import { FormACTData, FormACTDataMeetLocation, FormACTDataContactIntimacy } from '../../../../@models/cict/forms/form-a-ct-model';
 
 @Component({
   selector: 'cov-form-a-step-nine',
@@ -26,16 +23,23 @@ import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.
 })
 export class FormAStepNineComponent implements OnInit {
 
-  contacts = [
-    {
-      sno: "",
-      fname: "",
-      lname: "",
-      gender: "",
-      ageYear: 0,
-      ageMonth: 0,
-    }
-  ];
+  meetLocation = FormACTDataMeetLocation;
+  contactIntimacy = FormACTDataContactIntimacy;
+
+  contacts: FormACTData[] = [{
+    sno: "",
+    fname: "",
+    lname: "",
+    gender: "",
+    age: "",
+    caseRelation: "",
+    contactMeetLocation: null,
+    lastContactDate: null,
+    contactType: null,
+    contactAddress: "",
+    contactPhone: 0
+  }];
+
   constructor(public t: TranslationServiceEn) { }
 
   ngOnInit(): void {
@@ -47,8 +51,13 @@ export class FormAStepNineComponent implements OnInit {
       fname: "",
       lname: "",
       gender: "",
-      ageYear: 0,
-      ageMonth: 0,
+      age: "",
+      caseRelation: "",
+      contactMeetLocation: null,
+      lastContactDate: null,
+      contactType: null,
+      contactAddress: "",
+      contactPhone: 0
     });
 
     console.log(event);
