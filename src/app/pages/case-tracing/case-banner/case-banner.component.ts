@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActiveTasksCacheService } from '../../../@core/data/active-tasks-cache';
 import { NewCaseComponent } from '../new-case/new-case.component';
 import { TranslationServiceEn } from '../../../services/i18n/translation-gen.service';
 import { TranslateService } from '@ngx-translate/core';
+import { NewCaseFormeta } from '../new-case/new-case.formeta';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class CaseBannerComponent implements OnInit {
     private translationService: TranslateService
   ) { }
 
+  @Output() newCaseEvent = new EventEmitter<NewCaseFormeta>();
+
   ngOnInit(): void { }
 
   showNewCaseWindow(): boolean {
@@ -32,6 +35,11 @@ export class CaseBannerComponent implements OnInit {
         }
       }
     );
+
+    dialogRef.componentInstance.newCaseEvent.subscribe((receivedEntry) => {
+      this.newCaseEvent.emit(receivedEntry);
+    });
+
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
     });

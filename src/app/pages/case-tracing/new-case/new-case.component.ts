@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { ReplaySubject } from 'rxjs';
@@ -7,7 +7,7 @@ import { PROVINCES } from '../../../@core/data/province-districts.geo';
 import { TranslationServiceEn } from '../../../services/i18n/translation-gen.service';
 import { DialogData } from '../case.model';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { makeNewCaseFormModel, NewCaseFormeta, makeNewCaseFormGroup } from './new-case.formeta';
 
 
@@ -31,11 +31,29 @@ export class NewCaseComponent implements OnInit, OnDestroy {
   saveToCache = true;
   newTask: NewCaseFormeta = makeNewCaseFormModel();
 
+  @Output() newCaseEvent = new EventEmitter<NewCaseFormeta>();
+
   private [OnDestroySubject] = new ReplaySubject<true>(1);
 
   showOtherOccupation = false;
 
   newCaseFormGroup: FormGroup;
+
+  form: FormGroup = new FormGroup({
+    $key: new FormControl(null),
+    reportedDate: new FormControl(''),
+    reportedInstitution: new FormControl(''),
+    caseName: new FormControl(''),
+    phoneNum: new FormControl(0),
+    province: new FormControl(''),
+    district: new FormControl(''),
+    municipality: new FormControl(''),
+    wardNumber: new FormControl(0),
+    ward: new FormControl(0),
+    tole: new FormControl(''),
+    assignedTo: new FormControl(''),
+    caseInvestigator: new FormControl('')
+  })
 
   constructor(
     public t: TranslationServiceEn,
@@ -44,11 +62,13 @@ export class NewCaseComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) {
       this.translator.use('en');
+      this.createNewCaseForm();
   }
 
   ngOnInit() {
     this.provinces = PROVINCES?.map(province => province.name);
     this.createNewCaseForm();
+    console.log(this.newCaseFormGroup);
   }
 
   ngOnDestroy(): void {
@@ -62,6 +82,7 @@ export class NewCaseComponent implements OnInit, OnDestroy {
 
   addNewTask(_: any) {
     this.saveToCache = false;
+    this.newCaseEvent.emit(this.form.value);
   }
 
   changeDestProvince(event: string) {

@@ -1,6 +1,6 @@
 <nb-card class="medium" id="activeTaskCard">
     <nb-card-header>
-      <cov-case-banner></cov-case-banner>
+      <cov-case-banner (newCaseEvent)="createNewTask($event)"></cov-case-banner>
     </nb-card-header>
     <nb-card-body *ngIf="(activeTasksService.getActiveTasksData() | async) as activeTaskData">
         <div class="row">
@@ -9,7 +9,14 @@
                 <!-- Case Column -->
                 <ng-container matColumnDef="case">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Case</th>
-                    <td mat-cell *matCellDef="let activeCase">{{ activeCase.case }}</td>
+                    <td mat-cell *matCellDef="let activeCase">
+                      {{ activeCase.case }}
+                      <a href="#" (click)="showFormAWindow($event)">
+                        <span  class="badge badge-primary" data="{{ activeCase.case }}">
+                          Form A
+                        </span>
+                      </a>
+                    </td>
                 </ng-container>
 
                 <!-- Assigned to Column -->

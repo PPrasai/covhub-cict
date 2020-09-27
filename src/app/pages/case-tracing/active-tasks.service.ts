@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActiveTasksInfo } from './case.model';
+import { NewCaseFormeta } from './new-case/new-case.formeta';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,13 @@ export class ActiveTasksService {
 
   getActiveTasksData(): Observable<ActiveTasksInfo[]> {
     return this.activeTasksInfoData$.asObservable();
+  }
+
+  addOne(task: NewCaseFormeta) {
+    this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ...[{
+      case: task.caseName,
+      assignedTo: task.caseInvestigator,
+      time: Math.round((new Date().getTime() - task.reportedDate.getTime()) / 1000 / 60 / 60).toString() + ' Hr.'
+    }]]);
   }
 }
