@@ -6,6 +6,6 @@ export interface DialogData {
 
 export interface ActiveTasksInfo {
   case: string;
-  assignedTo: string;
+  caseInvestigator: string;
   time: string;
 }

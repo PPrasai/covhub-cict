@@ -27,7 +27,6 @@ export class ActiveTasksComponent implements OnInit {
   ngOnInit(): void { }
 
   createNewTask(task: NewCaseFormeta) {
-    console.log(task);
     this.activeTasksService.addOne(task);
   }
 

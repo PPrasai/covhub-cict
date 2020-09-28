@@ -12,22 +12,22 @@ export class ActiveTasksService {
   private activeTasksInfoArr: ActiveTasksInfo[] = [
     {
       case: 'Ram Thapa',
-      assignedTo: 'Dr. Hari Bahadur',
+      caseInvestigator: 'Dr. Hari Bahadur',
       time: '3 Hr.'
     },
     {
       case: 'Krishna Maharjan',
-      assignedTo: 'Dr. Hari Bahadur',
+      caseInvestigator: 'Dr. Hari Bahadur',
       time: '2 Hr.'
     },
     {
       case: 'Bipin Sitaula',
-      assignedTo: 'Dr. Nirmala KC',
+      caseInvestigator: 'Dr. Nirmala KC',
       time: '1 Hr.'
     },
     {
       case: 'Jiwan Bista',
-      assignedTo: 'Dr. Ram Krishna Dhakal',
+      caseInvestigator: 'Dr. Ram Krishna Dhakal',
       time: '6 Hr.'
     }
   ];
@@ -45,7 +45,7 @@ export class ActiveTasksService {
   addOne(task: NewCaseFormeta) {
     this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ...[{
       case: task.caseName,
-      assignedTo: task.caseInvestigator,
+      caseInvestigator: task.caseInvestigator,
       time: Math.round((new Date().getTime() - task.reportedDate.getTime()) / 1000 / 60 / 60).toString() + ' Hr.'
     }]]);
   }
