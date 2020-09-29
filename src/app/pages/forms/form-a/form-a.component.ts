@@ -1,9 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
+import { FormACTData } from '../../../@models/cict/forms/form-a-ct-model';
 
 import { TranslationServiceEn } from '../../../services/i18n/translation-gen.service';
+import { ContactTracingService } from '../../case-tracing/contact-tracing.service';
 import { StepState } from '../form.model';
 
 @Component({
@@ -19,11 +21,14 @@ export class FormAComponent implements OnInit, OnDestroy {
   formAOneTwo: StepState;
   formathree: StepState;
 
+  @Output() formASaveEvent = new EventEmitter<FormACTData[]>();
+
   // TODO put all the translatable labels in the en.json file for now
   constructor(
     private fb: FormBuilder,
     private translator: TranslateService,
-    public t: TranslationServiceEn
+    public t: TranslationServiceEn,
+    private contactTracingService: ContactTracingService
     ) {
     translator.use('en');
     translator.get(t.fab.thahaChhaina)
@@ -42,8 +47,10 @@ export class FormAComponent implements OnInit, OnDestroy {
     reset: () => null
   })
 
-  updateStep(_: any) {
+  updateStep(input: any) {
     this.formAOneTwo.valid = false;
+    console.log('step updated.\nreceived data:');
+    console.log(input);
   }
 
   prevStep(_: any) {
@@ -67,5 +74,10 @@ export class FormAComponent implements OnInit, OnDestroy {
   }
 
   formValueChanged(formValue: any) {}
+
+  newFormAData(data: FormACTData[]) {
+    // this.formASaveEvent.emit(data);
+    this.contactTracingService.addOne(data);
+  }
 
 }

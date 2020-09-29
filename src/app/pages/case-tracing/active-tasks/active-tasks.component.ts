@@ -31,8 +31,6 @@ export class ActiveTasksComponent implements OnInit {
   }
 
   showFormAWindow(event) {
-    console.log(event);
-
     const dialogRef = this.dialog.open(FormAComponent,
       {
         width: '80vw',

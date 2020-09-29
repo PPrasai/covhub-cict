@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
@@ -25,6 +25,8 @@ export class FormAStepNineComponent implements OnInit {
 
   meetLocation = FormACTDataMeetLocation;
   contactIntimacy = FormACTDataContactIntimacy;
+
+  @Output() saveFormAEvent = new EventEmitter<FormACTData[]>();
 
   contacts: FormACTData[] = [{
     sno: "",
@@ -59,8 +61,10 @@ export class FormAStepNineComponent implements OnInit {
       contactAddress: "",
       contactPhone: 0
     });
+  }
 
-    console.log(event);
+  saveFormA(event): void {
+    this.saveFormAEvent.emit(this.contacts);
   }
 
 

@@ -15,21 +15,21 @@ export class ActiveTasksService {
       caseInvestigator: 'Dr. Hari Bahadur',
       time: '3 Hr.'
     },
-    {
-      case: 'Krishna Maharjan',
-      caseInvestigator: 'Dr. Hari Bahadur',
-      time: '2 Hr.'
-    },
-    {
-      case: 'Bipin Sitaula',
-      caseInvestigator: 'Dr. Nirmala KC',
-      time: '1 Hr.'
-    },
-    {
-      case: 'Jiwan Bista',
-      caseInvestigator: 'Dr. Ram Krishna Dhakal',
-      time: '6 Hr.'
-    }
+    // {
+    //   case: 'Krishna Maharjan',
+    //   caseInvestigator: 'Dr. Hari Bahadur',
+    //   time: '2 Hr.'
+    // },
+    // {
+    //   case: 'Bipin Sitaula',
+    //   caseInvestigator: 'Dr. Nirmala KC',
+    //   time: '1 Hr.'
+    // },
+    // {
+    //   case: 'Jiwan Bista',
+    //   caseInvestigator: 'Dr. Ram Krishna Dhakal',
+    //   time: '6 Hr.'
+    // }
   ];
 
   private activeTasksInfoData$: BehaviorSubject<ActiveTasksInfo[]>;
