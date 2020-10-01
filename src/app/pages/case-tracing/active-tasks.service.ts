@@ -10,11 +10,11 @@ export class ActiveTasksService {
 
 
   private activeTasksInfoArr: ActiveTasksInfo[] = [
-    {
-      case: 'Ram Thapa',
-      caseInvestigator: 'Dr. Hari Bahadur',
-      time: '3 Hr.'
-    },
+    // {
+    //   case: 'Ram Thapa',
+    //   caseInvestigator: 'Dr. Hari Bahadur',
+    //   time: '3 Hr.'
+    // },
     // {
     //   case: 'Krishna Maharjan',
     //   caseInvestigator: 'Dr. Hari Bahadur',
