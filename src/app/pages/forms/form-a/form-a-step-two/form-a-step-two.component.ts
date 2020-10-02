@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { FormAService } from '../form-a.service';
 
 @Component({
   selector: 'cov-form-a-step-two',
@@ -8,11 +9,6 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./form-a-step-two.component.scss']
 })
 export class FormAStepTwoComponent implements OnInit {
-
-  constructor(public t: TranslationServiceEn) { }
-
-  ngOnInit(): void {
-  }
 
   form = new FormGroup({
     $key: new FormControl(null),
@@ -72,5 +68,19 @@ export class FormAStepTwoComponent implements OnInit {
     cboxOtherDiseaseSpecification: new FormControl('')
 
   });
+
+  constructor(public t: TranslationServiceEn,
+    public formAService: FormAService) {
+      this.formAService.newFormFlag$.subscribe(flag => {
+        if (flag) {
+          console.log('STEP 2 prepare data instruction received');
+          this.formAService.aggregateFormData(this.form);
+        }
+      });
+    }
+
+  ngOnInit(): void {
+  }
+
 
 }

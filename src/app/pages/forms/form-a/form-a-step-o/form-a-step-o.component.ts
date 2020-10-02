@@ -4,6 +4,7 @@ import { MatRadioChange } from '@angular/material/radio';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
+import { FormAService } from '../form-a.service';
 
 export enum YNU {
   ho = 'ho',
@@ -41,7 +42,16 @@ export class FormAStepOComponent implements OnInit {
     ifYesDate: new FormControl('')
   });
 
-  constructor(public t: TranslationServiceEn) { }
+  constructor(
+    public t: TranslationServiceEn,
+    public formAService: FormAService) {
+      this.formAService.newFormFlag$.subscribe(flag => {
+        if (flag) {
+          console.log("STEP 0: prepare data instruction received");
+          this.formAService.aggregateFormData(this.form);
+        }
+      });
+    }
 
   ngOnInit(): void {
   }

@@ -4,6 +4,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 
 import { FormACTData, FormACTDataMeetLocation, FormACTDataContactIntimacy } from '../../../../@models/cict/forms/form-a-ct-model';
+import { FormAService } from '../form-a.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'cov-form-a-step-nine',
@@ -42,7 +44,15 @@ export class FormAStepNineComponent implements OnInit {
     contactPhone: 0
   }];
 
-  constructor(public t: TranslationServiceEn) { }
+  constructor(public t: TranslationServiceEn,
+    public formAService: FormAService) {
+      this.formAService.newFormFlag$.subscribe(flag => {
+        if (flag) {
+          console.log('STEP 9: prepare data instruction received');
+          this.formAService.aggregateFormData(new FormGroup({}));
+        }
+      });
+    }
 
   ngOnInit(): void {
   }

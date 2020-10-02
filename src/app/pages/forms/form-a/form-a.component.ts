@@ -7,6 +7,7 @@ import { FormACTData } from '../../../@models/cict/forms/form-a-ct-model';
 import { TranslationServiceEn } from '../../../services/i18n/translation-gen.service';
 import { ContactTracingService } from '../../case-tracing/contact-tracing.service';
 import { StepState } from '../form.model';
+import { FormAService } from './form-a.service';
 
 @Component({
   selector: 'ngx-form-a',
@@ -28,6 +29,7 @@ export class FormAComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private translator: TranslateService,
     public t: TranslationServiceEn,
+    public formAService: FormAService,
     private contactTracingService: ContactTracingService
     ) {
     translator.use('en');
@@ -36,6 +38,7 @@ export class FormAComponent implements OnInit, OnDestroy {
       .subscribe((chhaina: string) => {
         this.caseStatus = chhaina;
       });
+
 
     this.formAOneTwo = this.deepState();
     this.formathree = this.deepState();
@@ -77,7 +80,7 @@ export class FormAComponent implements OnInit, OnDestroy {
 
   newFormAData(data: FormACTData[]) {
     this.contactTracingService.addOne(data);
-    this.formASaveEvent.emit(data);
+    this.formAService.prepareAllFormData();
   }
 
 }

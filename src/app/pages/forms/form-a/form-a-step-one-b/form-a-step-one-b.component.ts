@@ -6,6 +6,7 @@ import { DISTRICTS } from '../../../../@core/data/district-municipals.geo';
 import { MUNICIPALITIES } from '../../../../@core/data/municipal-wards.geo';
 
 import { FormControl, FormGroup } from '@angular/forms'
+import { FormAService } from '../form-a.service';
 
 @Component({
   selector: 'cov-form-a-step-one-b',
@@ -20,7 +21,15 @@ export class FormAStepOneBComponent implements OnInit {
   municipals: any [];
   wards: any [];
 
-  constructor(public t: TranslationServiceEn) { }
+  constructor(public t: TranslationServiceEn,
+    public formAService: FormAService) {
+      this.formAService.newFormFlag$.subscribe(flag => {
+        if (flag) {
+          console.log('STEP 1b: prepare data instruction received');
+          this.formAService.aggregateFormData(this.form);
+        }
+      });
+    }
 
   ngOnInit(): void {
     this.countries = COUNTRIES;

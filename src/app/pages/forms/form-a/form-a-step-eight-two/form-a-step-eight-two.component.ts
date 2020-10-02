@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TbodyCreateCancelComponent } from 'ng2-smart-table/lib/components/tbody/cells/create-cancel.component';
+import { FormAService } from '../form-a.service';
 
 @Component({
   selector: 'cov-form-a-step-eight-two',
@@ -14,12 +15,19 @@ export class FormAStepEightTwoComponent implements OnInit {
   todayString: string;
   form: FormGroup;
 
-  constructor(public t: TranslationServiceEn) {
+  constructor(public t: TranslationServiceEn, public formAService: FormAService) {
     this.todayString = this.today.getFullYear().toString() + '/';
     this.todayString += (this.today.getMonth() + 1).toString() + '/';
     this.todayString += this.today.getDate().toString();
 
     this.createFormGroup();
+
+    this.formAService.newFormFlag$.subscribe(flag => {
+      if (flag) {
+        console.log('STEP 8: prepare data instruction received');
+        this.formAService.aggregateFormData(this.form);
+      }
+    });
   }
 
   createFormGroup() {

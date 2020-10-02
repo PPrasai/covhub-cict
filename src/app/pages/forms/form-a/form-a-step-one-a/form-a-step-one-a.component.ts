@@ -6,6 +6,7 @@ import { MUNICIPALITIES } from '../../../../@core/data/municipal-wards.geo';
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 
 import { FormControl, FormGroup } from '@angular/forms';
+import { FormAService } from '../form-a.service';
 
 @Component({
   selector: 'cov-form-a-step-one-a',
@@ -20,15 +21,6 @@ export class FormAStepOneAComponent implements OnInit {
   municipals: any [];
   wards: any [];
 
-  constructor(public t: TranslationServiceEn) { }
-
-  ngOnInit(): void {
-    this.countries = COUNTRIES;
-    this.countryProvinces = PROVINCES?.map(province => province.name);
-    this.municipals = DISTRICTS?.map(district => district.name);
-    this.wards = MUNICIPALITIES?.map(municip => municip.name);
-  }
-
   form = new FormGroup({
     $key: new FormControl(null),
     country: new FormControl(null),
@@ -38,6 +30,23 @@ export class FormAStepOneAComponent implements OnInit {
     ward: new FormControl(null),
     tole: new FormControl('')
   });
+
+  constructor(public t: TranslationServiceEn,
+    public formAService: FormAService) {
+      this.formAService.newFormFlag$.subscribe(flag => {
+        if (flag) {
+          console.log('STEP 1a: prepare data instruction received');
+          this.formAService.aggregateFormData(this.form);
+        }
+      });
+    }
+
+  ngOnInit(): void {
+    this.countries = COUNTRIES;
+    this.countryProvinces = PROVINCES?.map(province => province.name);
+    this.municipals = DISTRICTS?.map(district => district.name);
+    this.wards = MUNICIPALITIES?.map(municip => municip.name);
+  }
 
   changeCountry(event: any) {
     // TODO check and remove
