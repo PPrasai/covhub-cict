@@ -76,8 +76,8 @@ export class FormAComponent implements OnInit, OnDestroy {
   formValueChanged(formValue: any) {}
 
   newFormAData(data: FormACTData[]) {
-    // this.formASaveEvent.emit(data);
     this.contactTracingService.addOne(data);
+    this.formASaveEvent.emit(data);
   }
 
 }
