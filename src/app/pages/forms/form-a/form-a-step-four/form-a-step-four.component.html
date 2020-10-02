@@ -1,3 +1,4 @@
+<form [formGroup]="form">
 <nb-card class="form-cont">
   <nb-card-body>
       <div class="row">
@@ -7,16 +8,18 @@
                 <nb-card>
               <nb-card-body class="row">
               <div class="col-md-2 col-lg-2">
-              <nb-checkbox matRipple status="basic">{{ t.fa.student | translate}} </nb-checkbox>
-             <nb-checkbox matRipple status="basic">{{ t.fa.healthLabWorkers | translate}} </nb-checkbox>
-              <nb-checkbox matRipple status="basic"> {{ t.fa.healthCareWorker | translate}}</nb-checkbox>
-              <nb-checkbox matRipple status="basic">{{ t.fa.animalHelpWorkers | translate}}</nb-checkbox>
+              <nb-checkbox formControlName="cboxStudent" matRipple status="basic">{{ t.fa.student | translate}} </nb-checkbox>
+             <nb-checkbox formControlName="cboxLabTech" matRipple status="basic">{{ t.fa.healthLabWorkers | translate}} </nb-checkbox>
+              <nb-checkbox formControlName="cboxHealthWorker" matRipple status="basic"> {{ t.fa.healthCareWorker | translate}}</nb-checkbox>
+              <nb-checkbox formControlName="cboxVet" matRipple status="basic">{{ t.fa.animalHelpWorkers | translate}}</nb-checkbox>
               </div>
               <div class="col-md-2 col-lg-2">
-                <nb-checkbox matRipple status="basic">{{ t.fa.hotelResturant | translate}}</nb-checkbox>
-               <nb-checkbox matRipple status="basic"> {{ t.fa.security | translate}}</nb-checkbox>
-                <nb-checkbox matRipple status="basic">{{ t.fa.garbageCollection | translate}}</nb-checkbox>
-                <nb-checkbox matRipple status="basic"> {{ t.fa.others | translate}}</nb-checkbox>
+                <nb-checkbox formControlName="cboxHospitality" matRipple status="basic">{{ t.fa.hotelResturant | translate}}</nb-checkbox>
+               <nb-checkbox formControlName="cboxSanitation" matRipple status="basic"> {{ t.fa.security | translate}}</nb-checkbox>
+                <nb-checkbox formControlName="cboxSecurity" matRipple status="basic">{{ t.fa.garbageCollection | translate}}</nb-checkbox>
+                <nb-checkbox formControlName="cboxOther" matRipple status="basic"> {{ t.fa.others | translate}}</nb-checkbox>
+
+                <input matInput autocomplete="off" type="text" formControlName="cboxOtherSpecification">
 
             </div>
               </nb-card-body>
@@ -29,10 +32,10 @@
     <div class="col-md-8 col-lg-8">
       <div class="form-a">
         <label class="title">{{ t.fa.last14DaysTravel | translate }}</label>
-        <nb-radio-group id="inputCaseStatus" name="travel-before-14-days" class="row">
-          <nb-radio>{{ t.fab.bhayo | translate }}</nb-radio>
-          <nb-radio>{{ t.fab.bhayena | translate }}</nb-radio>
-          <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
+        <nb-radio-group id="inputCaseStatus" formControlName="rbTravelBefore" name="travel-before-14-days" class="row">
+          <nb-radio value="Yes">{{ t.fab.bhayo | translate }}</nb-radio>
+          <nb-radio value="No">{{ t.fab.bhayena | translate }}</nb-radio>
+          <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
 
         </nb-radio-group>
 
@@ -43,7 +46,7 @@
     <div class="col-md-4 col-lg-4">
       <mat-form-field appearance="fill" class="form-a">
         <mat-label>{{ t.fa.country | translate}}</mat-label>
-        <input matInput autocomplete="off">
+        <input matInput formControlName="country" autocomplete="off">
       </mat-form-field>
     </div>
 
@@ -51,7 +54,7 @@
   <div class="col-md-4 col-lg-4">
     <mat-form-field appearance="fill" class="form-a">
       <mat-label>{{ t.fa.city | translate}}</mat-label>
-      <input matInput autocomplete="off">
+      <input matInput formControlName="city" autocomplete="off">
     </mat-form-field>
   </div>
 
@@ -61,7 +64,7 @@
       <div class="col-md-4 col-lg-4">
         <mat-form-field appearance="fill" class="form-a">
           <mat-label>{{ t.fa.visitDate | translate}}</mat-label>
-          <input matInput autocomplete="off">
+          <input matInput formControlName="departureDate" autocomplete="off">
         </mat-form-field>
       </div>
 
@@ -69,7 +72,7 @@
     <div class="col-md-4 col-lg-4">
       <mat-form-field appearance="fill" class="form-a">
         <mat-label>{{ t.fa.returnDate | translate}}</mat-label>
-        <input matInput autocomplete="off">
+        <input matInput formControlName="arrivalDate" autocomplete="off">
       </mat-form-field>
     </div>
 

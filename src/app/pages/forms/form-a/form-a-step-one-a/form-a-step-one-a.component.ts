@@ -4,6 +4,9 @@ import { PROVINCES } from '../../../../@core/data/province-districts.geo';
 import { DISTRICTS } from '../../../../@core/data/district-municipals.geo';
 import { MUNICIPALITIES } from '../../../../@core/data/municipal-wards.geo';
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
+
+import { FormControl, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'cov-form-a-step-one-a',
   templateUrl: './form-a-step-one-a.component.html',
@@ -26,6 +29,15 @@ export class FormAStepOneAComponent implements OnInit {
     this.wards = MUNICIPALITIES?.map(municip => municip.name);
   }
 
+  form = new FormGroup({
+    $key: new FormControl(null),
+    country: new FormControl(null),
+    province: new FormControl(null),
+    district: new FormControl(null),
+    municipality: new FormControl(null),
+    ward: new FormControl(null),
+    tole: new FormControl('')
+  });
 
   changeCountry(event: any) {
     // TODO check and remove

@@ -1,374 +1,379 @@
-<nb-card class="form-cont">
-  <nb-card-body>
+<form [formGroup]="form">
+  <nb-card class="form-cont">
+    <nb-card-body>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="" class="label" style="color:black">{{ t.fa.gharDhuri | translate }} </label>
-      </div>
-      <div class="form-group">
-          <mat-label> {{ t.fa.anyoneElseInCaseHouse | translate }} </mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="anyone-else-home" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-          </nb-radio-group>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="label" style="color:black">{{ t.fa.gharDhuri | translate }} </label>
+        </div>
+        <div class="form-group">
+            <mat-label> {{ t.fa.anyoneElseInCaseHouse | translate }} </mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbCaseHasFamily" id="inputCaseStatus" name="anyone-else-home" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
+            </nb-radio-group>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>
-          {{ t.fa.anyoneInHouseInServiceOfCase | translate }} </mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="any-familymember-involved" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>
+            {{ t.fa.anyoneInHouseInServiceOfCase | translate }} </mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbCaseServedByAnyone" id="inputCaseStatus" name="any-familymember-involved" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
 
-          </nb-radio-group>
+            </nb-radio-group>
+          </div>
         </div>
       </div>
-    </div>
 
 
 
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>{{ t.fa.ifYesInform | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>{{ t.fa.orgName | translate }} </mat-label>
-      </div>
-      <div class="form-group">
-        <mat-label> {{ t.fa.healthWorkerServeCase | translate }} </mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="any-professional-involved" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-          </nb-radio-group>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>{{ t.fa.ifYesInform | translate }}</mat-label>
+          <input type="text" formControlName="ifYesNumberOfMembers" nbInput placeholder="">
         </div>
       </div>
-    </div>
 
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>{{ t.fa.orgName | translate }} </mat-label>
+        </div>
+        <div class="form-group">
+          <mat-label> {{ t.fa.healthWorkerServeCase | translate }} </mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbCaseServedByHealthWorker" id="inputCaseStatus" name="any-professional-involved" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
 
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>{{ t.fa.ifYesInform2 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="" class="label" style="color:black"> {{ t.fa.transport | translate}} </label>
-      </div>
-      <div class="form-group">
-        <mat-label>
-          {{ t.fa.caseInPublicTransport | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="case-in-public-transport" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-          </nb-radio-group>
+            </nb-radio-group>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>{{ t.fa.ifYesWhichTransport | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="which-public-transport" class="row">
-            <nb-radio>{{ t.fa.plane | translate }}</nb-radio>
-            <nb-radio>{{ t.fa.taxi | translate }}</nb-radio>
-            <nb-radio>{{ t.fa.bus | translate }}/{{ t.fa.micro | translate }}</nb-radio>
-            <nb-radio>{{ t.fa.bike | translate }}</nb-radio>
-            <nb-radio>{{ t.fa.other | translate }}</nb-radio>
 
-          </nb-radio-group>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>{{ t.fa.ifYesInform2 | translate }}</mat-label>
         </div>
       </div>
-    </div>
 
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="label" style="color:black"> {{ t.fa.transport | translate}} </label>
+        </div>
+        <div class="form-group">
+          <mat-label>
+            {{ t.fa.caseInPublicTransport | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbCaseUsedPublicTransport" id="inputCaseStatus" name="case-in-public-transport" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.travelDate | translate }} </mat-label>
-        <input [nbDatepicker]="datepicker">
-        <nb-datepicker #datepicker></nb-datepicker> <br />
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.vehicleType | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.re | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.vehicleNumber | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someNumber1 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someNumber2 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someDepartureLocation | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someNumber3 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someNumber4 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someStartLocation | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.destination | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someMedium | translate }}</mat-label>
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="" class="label" style="color:black"> {{ t.fa.officeOrClassroom | translate }}</label>
-
-      </div>
-      <div class="form-group">
-        <mat-label>{{ t.fa.caseGoneToSchoolOffice | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="visit-school-or-work" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-          </nb-radio-group>
+            </nb-radio-group>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.officeName | translate }}</mat-label>
-      </div>
-    </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>{{ t.fa.ifYesWhichTransport | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbIfYesWhatMedium" id="inputCaseStatus" name="which-public-transport" class="row">
+              <nb-radio value="Plane">{{ t.fa.plane | translate }}</nb-radio>
+              <nb-radio value="Taxi">{{ t.fa.taxi | translate }}</nb-radio>
+              <nb-radio value="Bus">{{ t.fa.bus | translate }}/{{ t.fa.micro | translate }}</nb-radio>
+              <nb-radio value="Bike">{{ t.fa.bike | translate }}</nb-radio>
+              <nb-radio value="Other">{{ t.fa.other | translate }}</nb-radio>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>  {{ t.fa.address | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.phoneNumber | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.supervisor | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.contact | translate }}</mat-label>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <label class="label" style="color: black;"> {{ t.fa.someClosedEnv | translate }}</label>
-
-      </div>
-      <div class="form-group">
-        <mat-label>{{ t.fa.hotelResturantCaseContact | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="in-close-proximity-enclosed-space" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-          </nb-radio-group>
+            </nb-radio-group>
+          </div>
         </div>
       </div>
-    </div>
 
 
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someContact1 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <label class="label" style="color: black;"> {{ t.fa.someContact2 | translate }}</label>
-
-      </div>
-      <div class="form-group">
-        <mat-label>
-          {{ t.fa.someContact2 | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="social-contact" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-          </nb-radio-group>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.travelDate | translate }} </mat-label>
+          <input nbInput formControlName="ifYesWhen" [nbDatepicker]="datepicker">
+          <nb-datepicker #datepicker></nb-datepicker> <br />
         </div>
       </div>
-    </div>
 
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someContact3 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <label class="label" style="color: black;"> {{ t.fa.someContact4 | translate }}</label>
-
-      </div>
-      <div class="form-group">
-        <mat-label>{{ t.fa.caseInProgramCrowdReligious | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="case-in-party" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-          </nb-radio-group>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label style="color: black;"> {{ t.fa.vehicleType | translate }}</mat-label>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>{{ t.fa.namesOfOrganizer | translate }}</mat-label>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.address | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.phone | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someProgram | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someContact6 | translate }}</mat-label>
-      </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label> {{ t.fa.someContact7 | translate }}</mat-label>
-        <input type="text" nbInput placeholder="">
-      </div>
-    </div>
-
-
-    <div class="col-md-12">
-      <div class="form-group">
-        <mat-label>{{ t.fa.oneOrMoreContactKnown | translate }}</mat-label>
-        <div class="col-sm-6">
-          <nb-radio-group id="inputCaseStatus" name="one-or-more-contact" class="row">
-            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-
-
-          </nb-radio-group>
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.re | translate }}</mat-label>
+          <input formControlName="route" type="text" nbInput placeholder="">
         </div>
       </div>
-    </div>
-</nb-card-body>
-</nb-card>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.vehicleNumber | translate }}</mat-label>
+          <input formControlName="vehicleNumber" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someNumber1 | translate }}</mat-label>
+          <input formControlName="seatNumber" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someNumber2 | translate }}</mat-label>
+          <input formControlName="taxiNumber" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someDepartureLocation | translate }}</mat-label>
+          <input formControlName="taxiEmbarkLocation" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someNumber3 | translate }}</mat-label>
+          <input formControlName="flightNumber" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someNumber4 | translate }}</mat-label>
+          <input formControlName="flightSeatNumber" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someStartLocation | translate }}</mat-label>
+          <input formControlName="travelOrigin" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.destination | translate }}</mat-label>
+          <input formControlName="travelDestination" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someMedium | translate }}</mat-label>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="" class="label" style="color:black"> {{ t.fa.officeOrClassroom | translate }}</label>
+
+        </div>
+        <div class="form-group">
+          <mat-label>{{ t.fa.caseGoneToSchoolOffice | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbSchoolOrOffice" id="inputCaseStatus" name="visit-school-or-work" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
+
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.officeName | translate }}</mat-label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>  {{ t.fa.address | translate }}</mat-label>
+          <input formControlName="ifYesAddress" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.phoneNumber | translate }}</mat-label>
+          <input formControlName="ifYesPhone" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.supervisor | translate }}</mat-label>
+          <input formControlName="authorityName" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.contact | translate }}</mat-label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="label" style="color: black;"> {{ t.fa.someClosedEnv | translate }}</label>
+
+        </div>
+        <div class="form-group">
+          <mat-label>{{ t.fa.hotelResturantCaseContact | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbInCloseProximity" id="inputCaseStatus" name="in-close-proximity-enclosed-space" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
+
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someContact1 | translate }}</mat-label>
+          <!-- <input type="text" nbInput placeholder=""> -->
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="label" style="color: black;"> {{ t.fa.someContact2 | translate }}</label>
+
+        </div>
+        <div class="form-group">
+          <mat-label>
+            {{ t.fa.someContact2 | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbSocialContact" id="inputCaseStatus" name="social-contact" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
+
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someContact3 | translate }}</mat-label>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="label" style="color: black;"> {{ t.fa.someContact4 | translate }}</label>
+
+        </div>
+        <div class="form-group">
+          <mat-label>{{ t.fa.caseInProgramCrowdReligious | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbCaseAttendProgram" id="inputCaseStatus" name="case-in-party" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+              <nb-radio value="Do not know">{{ t.fab.thahaChhaina | translate }}</nb-radio>
+
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>{{ t.fa.namesOfOrganizer | translate }}</mat-label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.address | translate }}</mat-label>
+          <input formControlName="programAddress" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.phone | translate }}</mat-label>
+          <input formControlName="programPhone" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someProgram | translate }}</mat-label>
+          <input formControlName="programDate" type="text" nbInput placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someContact6 | translate }}</mat-label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label> {{ t.fa.someContact7 | translate }}</mat-label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <textarea cols="100" formControlName="helpfulInfoForContactTracing" nbInput placeholder=""></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <mat-label>{{ t.fa.oneOrMoreContactKnown | translate }}</mat-label>
+          <div class="col-sm-6">
+            <nb-radio-group formControlName="rbOneOrMoreContactInPartSix" id="inputCaseStatus" name="one-or-more-contact" class="row">
+              <nb-radio value="Yes">{{ t.fab.chha | translate }}</nb-radio>
+              <nb-radio value="No">{{ t.fab.chhaina | translate }}</nb-radio>
+
+
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+  </nb-card-body>
+  </nb-card>
+</form>

@@ -5,6 +5,8 @@ import { PROVINCES } from '../../../../@core/data/province-districts.geo';
 import { DISTRICTS } from '../../../../@core/data/district-municipals.geo';
 import { MUNICIPALITIES } from '../../../../@core/data/municipal-wards.geo';
 
+import { FormControl, FormGroup } from '@angular/forms'
+
 @Component({
   selector: 'cov-form-a-step-one-b',
   templateUrl: './form-a-step-one-b.component.html',
@@ -31,6 +33,14 @@ export class FormAStepOneBComponent implements OnInit {
     // TODO check and remove
   }
 
+  form = new FormGroup({
+    $key: new FormControl(null),
+    country: new FormControl(null),
+    province: new FormControl(null),
+    district: new FormControl(null),
+    municipality: new FormControl(null),
+    ward: new FormControl(null)
+  });
 
   provinceChanged(event: any) {
     const prov = PROVINCES.filter(obj => {

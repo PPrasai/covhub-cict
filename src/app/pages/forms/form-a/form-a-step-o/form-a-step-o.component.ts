@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
 
+import { FormGroup, FormControl } from '@angular/forms';
+
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 
 export enum YNU {
@@ -29,6 +31,15 @@ export class FormAStepOComponent implements OnInit {
     hoina: false,
     thahaChhaina: null
   };
+
+  form: FormGroup = new FormGroup({
+    $key: new FormControl(null),
+    caseName: new FormControl(''),
+    reportedDate: new FormControl(''),
+    nameOfPoEOrQuarantine: new FormControl(''),
+    discoveredOnPoEOrQuarantine: new FormControl(null),
+    ifYesDate: new FormControl('')
+  });
 
   constructor(public t: TranslationServiceEn) { }
 
@@ -78,5 +89,4 @@ export class FormAStepOComponent implements OnInit {
     const { checked, id } = event.source;
     idMapper(id, checked);
   }
-
 }

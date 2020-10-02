@@ -1,5 +1,5 @@
 
-<form>
+<form [formGroup]="form">
   <nb-card class="form-cont">
     <nb-card-body>
       <nb-card>
@@ -8,7 +8,7 @@
         <div class="col-md-4 col-lg-4">
           <div class="form-a">
             <label class="title">{{ t.fa.nasopharyngeal | translate }}</label>
-            <nb-radio-group id="inputCaseStatus" name="Nasopharyngeal" class="row">
+            <nb-radio-group formControlName="rbNasopharyngeal" id="inputCaseStatus" name="Nasopharyngeal" class="row">
               <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
               <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
           </nb-radio-group>
@@ -18,7 +18,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label>{{ t.fa.sampleCollectionDate | translate }}</mat-label>
-            <input matInput autocomplete="off">
+            <input matInput formControlName="sampleCollectionDate" autocomplete="off">
             <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
           </mat-form-field>
         </div>
@@ -26,7 +26,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.sampleSendDate | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="sampleDispatchDate" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label>{{ t.fa.resultsDate | translate }}</mat-label>
-            <input matInput autocomplete="off">
+            <input matInput formControlName="labTestResultDate" autocomplete="off">
           </mat-form-field>
         </div>
 
@@ -49,7 +49,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.results | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="labTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
@@ -62,7 +62,7 @@
         <div class="col-md-4 col-lg-4">
           <div class="form-a">
             <label class="title">{{ t.fa.oropharyngeal | translate }}</label>
-            <nb-radio-group id="inputCaseStatus" name="Oropharyngeal" class="row">
+            <nb-radio-group formControlName="rbOropharyngeal" id="inputCaseStatus" name="Oropharyngeal" class="row">
               <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
               <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
           </nb-radio-group>
@@ -72,7 +72,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label>{{ t.fa.sampleCollectionDate | translate }}</mat-label>
-            <input matInput autocomplete="off">
+            <input matInput formControlName="oropharyngealSampleCollectionDate" autocomplete="off">
             <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
           </mat-form-field>
         </div>
@@ -80,7 +80,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.sampleSendDate | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="oropharyngealSampleDispatchDate" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
       </div>
@@ -92,7 +92,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label>{{ t.fa.resultsDate | translate }}</mat-label>
-            <input matInput autocomplete="off">
+            <input matInput formControlName="oropharyngealLabTestResultDate" autocomplete="off">
           </mat-form-field>
         </div>
 
@@ -103,7 +103,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.results | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="oropharyngealLabTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
@@ -116,7 +116,7 @@
         <div class="col-md-4 col-lg-4">
           <div class="form-a">
             <label class="title">{{ t.fa.others | translate }}</label>
-            <nb-radio-group id="inputCaseStatus" name="lab-others" class="row">
+            <nb-radio-group formControlName="rbOther" id="inputCaseStatus" name="lab-others" class="row">
               <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
               <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
           </nb-radio-group>
@@ -126,7 +126,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label>{{ t.fa.sampleCollectionDate | translate }}</mat-label>
-            <input matInput autocomplete="off">
+            <input matInput formControlName="otherSampleCollectionDate" autocomplete="off">
             <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
           </mat-form-field>
         </div>
@@ -134,7 +134,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.sampleSendDate | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="otherSampleDispatchDate" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
       </div>
@@ -146,7 +146,7 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label>{{ t.fa.resultsDate | translate }}</mat-label>
-            <input matInput autocomplete="off">
+            <input matInput formControlName="otherLabTestResultDate" autocomplete="off">
           </mat-form-field>
         </div>
 
@@ -157,14 +157,14 @@
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.results | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="otherLabTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.others2 | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="otherTestSpecification" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
@@ -177,7 +177,7 @@
         <div class="col-md-6 col-lg-6">
           <div class="form-a">
             <label class="title">{{ t.fa.sampleSentLocation | translate }}</label>
-            <nb-radio-group id="inputCaseStatus" name="lab-category" class="row">
+            <nb-radio-group formControlName="rbLabType" id="inputCaseStatus" name="lab-category" class="row">
               <nb-radio>NPHL</nb-radio>
               <nb-radio>Non-NPHL</nb-radio>
           </nb-radio-group>
@@ -188,7 +188,7 @@
          <div class="col-md-6 col-lg-6">
           <div class="form-a">
             <label class="title">{{ t.fa.lab | translate }}</label>
-            <nb-radio-group id="inputCaseStatus" name="other-lab" class="row">
+            <nb-radio-group formControlName="rbAnyOtherTestLab" id="inputCaseStatus" name="other-lab" class="row">
               <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
               <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
           </nb-radio-group>
@@ -200,14 +200,14 @@
         <div class="col-md-6 col-lg-6">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.testName | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="ifYesTestName" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
         <div class="col-md-6 col-lg-6">
           <mat-form-field appearance="fill" class="form-a">
             <mat-label> {{ t.fa.results2 | translate }} </mat-label>
-            <input matInput placeholder="दिन/महिना/वर्ष">
+            <input matInput formControlName="ifYesTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
