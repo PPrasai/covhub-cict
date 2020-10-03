@@ -40,7 +40,7 @@ export class FormADataService implements DBService {
     return this.dbService.addAll(this.formADB, docs);
   }
 
-  async getTableHeaders(current = 'pschema:form-a:0'): Promise<string[][]> {
+  async getTableHeaders(current = 'pschema:form-a'): Promise<string[][]> {
     console.log('running async getTableHeaders()');
     if (this.formAHeaders_) return Promise.resolve(this.formAHeaders_);
     try {

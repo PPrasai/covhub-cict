@@ -10,6 +10,7 @@ export class FormAService {
   private newFormFlag = false;
   public newFormFlag$: BehaviorSubject<Boolean>;
   public formAAggregateData = [];
+  private fullDataObject = {};
 
   constructor(private dataService: FormADataService) {
     this.newFormFlag$ = new BehaviorSubject(this.newFormFlag);
@@ -24,11 +25,16 @@ export class FormAService {
   }
 
   aggregateFormData(formGroup: FormGroup) {
-    this.formAAggregateData.push(formGroup);
-    console.log(this.formAAggregateData.length);
+    this.formAAggregateData.push(formGroup.value);
+    this.fullDataObject = {...this.fullDataObject, ...formGroup.value};
 
     if (this.formAAggregateData.length == 12) {
-      this.dataService.addAll([this.formAAggregateData[0].value]).then(_ => {
+      console.log(this.formAAggregateData.slice(0,3));
+      this.formAAggregateData = [this.fullDataObject];
+      console.log(this.formAAggregateData);
+      this.dataService.addAll(
+        this.formAAggregateData.slice(0,3)).then(_ => {
+        console.log(this.formAAggregateData.slice(0,3));
         this.formAAggregateData = [];
       })
     }
