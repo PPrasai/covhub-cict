@@ -2,6 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { RdtService } from '../services/db/rdt.service';
 import { PcrService } from '../services/db/pcr.service';
 import { ReturneeService } from '../services/db/returnee.service';
+import { FormADataService } from '../services/db/form-a-data.service';
 
 export interface DBList {
   [dbId: string]: {
@@ -21,7 +22,8 @@ export enum Databases {
   audit = 'usage_audit',
   matrix = 'matrix',
   roles = 'roles',
-  cict = 'cict'
+  cict = 'cict',
+  form_a = 'form_a'
 }
 
 export interface ExistingDoc {
@@ -176,7 +178,7 @@ export enum CurrentUser {
   token = 'token'
 }
 
-export type DataTableService = RdtService | PcrService | ReturneeService;
+export type DataTableService = RdtService | PcrService | ReturneeService | FormADataService;
 
 export function isReturneeService(service: DataTableService): service is ReturneeService {
   return 'getAllWards' in service;

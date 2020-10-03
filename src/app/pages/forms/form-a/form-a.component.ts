@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 import { FormACTData } from '../../../@models/cict/forms/form-a-ct-model';
+import { FormADataService } from '../../../services/db/form-a-data.service';
 
 import { TranslationServiceEn } from '../../../services/i18n/translation-gen.service';
 import { ContactTracingService } from '../../case-tracing/contact-tracing.service';
@@ -38,7 +39,6 @@ export class FormAComponent implements OnInit, OnDestroy {
       .subscribe((chhaina: string) => {
         this.caseStatus = chhaina;
       });
-
 
     this.formAOneTwo = this.deepState();
     this.formathree = this.deepState();
