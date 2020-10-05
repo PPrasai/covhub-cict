@@ -8,7 +8,7 @@ export interface NewCaseFormeta {
 
   reportedInstitution: string;
 
-  caseName: string;
+  case: string;
   phoneNum: number;
 
   province: string;
@@ -33,7 +33,7 @@ export interface NewCaseFormeta {
 export const makeNewCaseFormModel: () => NewCaseFormeta = () => ({
   reportedDate: null,
   reportedInstitution: '',
-  caseName: '',
+  case: '',
   phoneNum: null,
   province: null,
   district: '',

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActiveTasksInfo } from './case.model';
+import { CaseService } from './new-case/case.service';
 import { NewCaseFormeta } from './new-case/new-case.formeta';
 
 @Injectable({
@@ -15,9 +16,7 @@ export class ActiveTasksService {
     //   caseInvestigator: 'Dr. Hari Bahadur',
     //   time: '3 Hr.'
     // },
-    // {
-    //   case: 'Krishna Maharjan',
-    //   caseInvestigator: 'Dr. Hari Bahadur',
+    // {case
     //   time: '2 Hr.'
     // },
     // {
@@ -34,8 +33,17 @@ export class ActiveTasksService {
 
   private activeTasksInfoData$: BehaviorSubject<ActiveTasksInfo[]>;
 
-  constructor() {
+  constructor(
+    private caseService: CaseService
+  ) {
     this.activeTasksInfoData$ = new BehaviorSubject(this.activeTasksInfoArr);
+    this.caseService.getAll().then(data => {
+      data.rows.forEach(row => {
+        console.log('************')
+        console.log(row.doc);
+        this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ... [row.doc as unknown as ActiveTasksInfo]]);
+      });
+    })
   }
 
   getActiveTasksData(): Observable<ActiveTasksInfo[]> {
@@ -44,9 +52,10 @@ export class ActiveTasksService {
 
   addOne(task: NewCaseFormeta) {
     this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ...[{
-      case: task.caseName,
+      case: task.case,
       caseInvestigator: task.caseInvestigator,
       time: Math.round((new Date().getTime() - task.reportedDate.getTime()) / 1000 / 60 / 60).toString() + ' Hr.'
     }]]);
-  }
+
+    this.caseService.addAll(task);  }
 }

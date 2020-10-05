@@ -23,7 +23,8 @@ export enum Databases {
   matrix = 'matrix',
   roles = 'roles',
   cict = 'cict',
-  form_a = 'form_a'
+  form_a = 'form_a',
+  new_case = 'new_case'
 }
 
 export interface ExistingDoc {

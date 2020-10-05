@@ -9,15 +9,11 @@ import { FormADataService } from '../../../services/db/form-a-data.service';
 export class FormAService {
   private newFormFlag = false;
   public newFormFlag$: BehaviorSubject<Boolean>;
-  public formAAggregateData = [];
+  private formsResponded = 0;
   private fullDataObject = {};
 
   constructor(private dataService: FormADataService) {
     this.newFormFlag$ = new BehaviorSubject(this.newFormFlag);
-
-    this.dataService.getAll().then(data => {
-      console.log(data);
-    });
   }
 
   prepareAllFormData() {
@@ -25,17 +21,13 @@ export class FormAService {
   }
 
   aggregateFormData(formGroup: FormGroup) {
-    this.formAAggregateData.push(formGroup.value);
+    this.formsResponded += 1;
     this.fullDataObject = {...this.fullDataObject, ...formGroup.value};
 
-    if (this.formAAggregateData.length == 12) {
-      console.log(this.formAAggregateData.slice(0,3));
-      this.formAAggregateData = [this.fullDataObject];
-      console.log(this.formAAggregateData);
+    if (this.formsResponded == 12) {
       this.dataService.addAll(
-        this.formAAggregateData.slice(0,3)).then(_ => {
-        console.log(this.formAAggregateData.slice(0,3));
-        this.formAAggregateData = [];
+        [this.fullDataObject]).then(_ => {
+        this.formsResponded = 0;
       })
     }
   }

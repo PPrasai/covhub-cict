@@ -9,6 +9,7 @@ import { DialogData } from '../case.model';
 
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { makeNewCaseFormModel, NewCaseFormeta, makeNewCaseFormGroup } from './new-case.formeta';
+import { CaseService } from './case.service';
 
 
 
@@ -43,7 +44,7 @@ export class NewCaseComponent implements OnInit, OnDestroy {
     $key: new FormControl(null),
     reportedDate: new FormControl(''),
     reportedInstitution: new FormControl(''),
-    caseName: new FormControl(''),
+    case: new FormControl(''),
     phoneNum: new FormControl(0),
     province: new FormControl(''),
     district: new FormControl(''),
@@ -59,7 +60,8 @@ export class NewCaseComponent implements OnInit, OnDestroy {
     public t: TranslationServiceEn,
     private translator: TranslateService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private newCaseService: CaseService
   ) {
       this.translator.use('en');
       this.createNewCaseForm();
@@ -68,7 +70,6 @@ export class NewCaseComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.provinces = PROVINCES?.map(province => province.name);
     this.createNewCaseForm();
-    console.log(this.newCaseFormGroup);
   }
 
   ngOnDestroy(): void {

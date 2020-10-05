@@ -9,17 +9,17 @@ import { PouchDBService } from './pouchdb.service';
 @Injectable({
   providedIn: 'root',
 })
-export class FormADataService implements DBService {
+export class CaseDataService implements DBService {
 
-  private formADB = Databases.form_a;
-  private formAHeaders_: string[][];
+  private newCaseDB = Databases.new_case;
+  private newCaseHeaders_: string[][];
 
   constructor(private dbService: PouchDBService) {
     this.instance();
     this.remoteSync();
   }
 
-  get headers(): string[][] { return this.formAHeaders_; }
+  get headers(): string[][] { return this.newCaseHeaders_; }
 
   // Async functions to interface with the DB
   async getAll() {
@@ -30,54 +30,55 @@ export class FormADataService implements DBService {
 
     const locAllDocs = await this.instance()?.allDocs(requestQuery) as AllDocs.Root;
     if (locAllDocs.rows.length != 0) return locAllDocs;
-    const response = await this.dbService?.getRemoteDBInstance(this.formADB)?.allDocs(requestQuery) as AllDocs.Root;
+    const response = await this.dbService?.getRemoteDBInstance(this.newCaseDB)?.allDocs(requestQuery) as AllDocs.Root;
     return response
   }
 
   async addAll(docs: Doc[]): Promise<BulkAddResponse | undefined> {
     console.log('running async addAll()');
-    return this.dbService.addAll(this.formADB, docs);
+    return this.dbService.addAll(this.newCaseDB, docs);
   }
 
   async getTableHeaders(current = 'pschema:form-a'): Promise<string[][]> {
     console.log('running async getTableHeaders()');
-    if (this.formAHeaders_) return Promise.resolve(this.formAHeaders_);
+    if (this.newCaseHeaders_) return Promise.resolve(this.newCaseHeaders_);
     try {
       const response = await this.get(current) as PSchema;
       console.log('Got TableHeaders:');
       console.log(response.fields);
-      return (this.formAHeaders_ = response.fields);
+      return (this.newCaseHeaders_ = response.fields);
     } catch (error) {
       throw Error('Form A table headers could not be fetced');
     }
   }
 
   // Implementations for DBService
-  instance(): PouchDB.Database<{}> | undefined{
-    return this.dbService.instance(this.formADB);
+  instance(): PouchDB.Database<{}> {
+    return this.dbService.instance(this.newCaseDB);
   }
 
-  remoteSync(): EventEmitter<any> | undefined {
-    return this.dbService?.remoteSync(this.formADB);
+  remoteSync?(): EventEmitter<any> {
+    return this.dbService.remoteSync(this.newCaseDB);
   }
 
-  getChangeListener(): EventEmitter<any> | undefined {
-    return this.dbService?.getChangeListener(this.formADB);
+  getChangeListener?(): EventEmitter<any> {
+    return this.dbService.getChangeListener(this.newCaseDB);
   }
 
-  get(id: string): Promise<any> | undefined {
-    return this.dbService?.get(this.formADB, id);
+  get(id: string): Promise<any> {
+    return this.dbService.get(this.newCaseDB, id);
   }
 
-  create(doc: ExistingDoc): Promise<any> {
-    return this.dbService.create(this.formADB, doc);
+  create?(doc: ExistingDoc): Promise<any> {
+    return this.dbService.create(this.newCaseDB, doc);
   }
 
-  update(doc: ExistingDoc): Promise<any> {
-    return this.dbService.update(this.formADB, doc);
+  update?(doc: ExistingDoc): Promise<any> {
+    return this.dbService.update(this.newCaseDB, doc);
   }
 
-  delete(doc: ExistingDoc): Promise<any> {
-    return this.dbService.delete(this.formADB, doc);
+  delete?(doc: ExistingDoc): Promise<any> {
+    return this.dbService.delete(this.newCaseDB,doc);
   }
+
 }

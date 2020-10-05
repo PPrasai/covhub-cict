@@ -35,7 +35,7 @@ export class FormAStepOComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
-    caseName: new FormControl(''),
+    case: new FormControl(''),
     reportedDate: new FormControl(''),
     nameOfPoEOrQuarantine: new FormControl(''),
     discoveredOnPoEOrQuarantine: new FormControl(null),
