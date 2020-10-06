@@ -11,7 +11,9 @@
           </nb-radio-group>
           </div>
         </div>
+      </div>
 
+      <div class="row">
         <div class="col-md-6 col-lg-6">
           <div class="form-group">
             <label class="title">{{ t.fa.lastFourWeeksSymptoms | translate }}</label>
@@ -25,9 +27,9 @@
         </div>
 
       <div class="row">
-        <div class="col-md-12 col-lg-12">
+        <div class="col-md-6 col-lg-6">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label >{{ t.fa.symptomaticCaseInvestigation | translate }} </mat-label>
+            <label class="title">{{ t.fa.symptomaticCaseInvestigation | translate }} </label>
             <input matInput autocomplete="off" formControlName="ifNotWhyTest">
           </mat-form-field>
         </div>
@@ -36,7 +38,7 @@
   <div class="row">
     <div class="col-md-6 col-lg-6">
       <mat-form-field appearance="fill" class="form-a">
-        <mat-label >{{ t.fa.symptomsDate | translate }} </mat-label>
+        <label class="title">{{ t.fa.symptomsDate | translate }} </label>
         <input matInput autocomplete="off" formControlName="ifYesWhen">
       </mat-form-field>
     </div>
@@ -48,7 +50,7 @@
                 <label class="title">{{ t.fa.symptomsKnown | translate }}</label>
                   <nb-card>
                 <nb-card-body class="row">
-                <div class="col-md-2 col-lg-2">
+                <div class="col-md-3 col-lg-3">
                 <nb-checkbox matRipple formControlName="cboxHistoryOfFeverChills" status="basic"> History of fever / chills | ज्वरो </nb-checkbox>
                 <nb-checkbox matRipple formControlName="cboxGeneralWeakness" status="basic"> General weakness | कमजोरी </nb-checkbox>
                 <nb-checkbox matRipple formControlName="cboxCough" status="basic"> Cough | खोकी </nb-checkbox>
@@ -57,7 +59,7 @@
                 <nb-checkbox matRipple formControlName="cboxShortnessOfBreath" status="basic"> Shortness of breath | सास फेर्न गाह्रो
                 </nb-checkbox>
               </div>
-                <div class="col-md-2 col-lg-2">
+                <div class="col-md-3 col-lg-3">
                 <nb-checkbox matRipple formControlName="cboxDiarrhea" status="basic"> Diarrhea | पखाला</nb-checkbox>
                 <nb-checkbox matRipple formControlName="cboxNauseaVomiting" status="basic"> Nausea/Vomiting | मतली / बान्ता</nb-checkbox>
                 <nb-checkbox matRipple formControlName="cboxHeadache" status="basic"> Headache | टाउको दुखाइ</nb-checkbox>
@@ -66,7 +68,7 @@
                 <nb-checkbox matRipple formControlName="cboxLossOfTaste" status="basic"> Loss of taste | स्वाद हराउनु </nb-checkbox>
                 <nb-checkbox matRipple formControlName="cboxLossOfSmell" status="basic"> Loss of smell | गन्ध हराउनु</nb-checkbox>
               </div>
-                <div class="col-md-2 col-lg-2">
+                <div class="col-md-3 col-lg-3">
                 <label class="label">Pain(check all that apply) | लागू हुने सबैमा टिक गर्नुहोस्</label>
                 <nb-checkbox matRipple formControlName="cboxPainMuscular" status="basic"> Muscular | मांसपेशी </nb-checkbox>
                 <nb-checkbox matRipple formControlName="cboxPainChest" status="basic"> Chest | छाती </nb-checkbox>
@@ -81,6 +83,16 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <div class="form-group">
+            <label class="title"> {{ t.fa.temp | translate }}</label>
+            <input type="number" autocomplete="off" matInput formControlName="temp">
+            <nb-checkbox matRipple formControlName="cboxDegreeC" status="basic">°C</nb-checkbox>
+            <nb-checkbox matRipple formControlName="cboxDegreeF" status="basic">°F</nb-checkbox>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12 col-lg-12">
           <div class="form-group">
@@ -120,10 +132,10 @@
           <nb-card>
         <nb-card-body class="row">
         <div class="col-md-2 col-lg-2">
-          <nb-checkbox matRipple formControlName="cboxPregnant" status="basic"> गभाषवस्था (िैमाभसक) </nb-checkbox>
-          <nb-checkbox matRipple formControlName="cboxRecentMother" status="basic"> सुत्के रीवस्था (६ िप्ता) </nb-checkbox>
-          <nb-checkbox matRipple formControlName="cboxDiabetes" status="basic"> मधुमेि </nb-checkbox>
-          <nb-checkbox matRipple formControlName="cboxHeartDisease" status="basic"> मुिु सम्बन्धी रोग, रिचाप सभित</nb-checkbox>
+          <nb-checkbox matRipple formControlName="cboxPregnant" status="basic"> {{ t.fa.pregnancy | translate }} </nb-checkbox>
+          <nb-checkbox matRipple formControlName="cboxRecentMother" status="basic"> {{ t.fa.postpartum | translate }} </nb-checkbox>
+          <nb-checkbox matRipple formControlName="cboxHeartDisease" status="basic"> {{ t.fa.heartDisease | translate }} </nb-checkbox>
+          <nb-checkbox matRipple formControlName="cboxDiabetes" status="basic"> {{ t.fa.diabetes | translate }} </nb-checkbox>
 
           <nb-checkbox matRipple formControlName="cboxLiverDisease" status="basic"> कलेजोको रोग</nb-checkbox>
         </div>

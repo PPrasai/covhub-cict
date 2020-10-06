@@ -1,6 +1,15 @@
 <form [formGroup]="form">
 <nb-card class="form-cont">
   <nb-card-body>
+
+    <div class="row">
+      <div class="col-md-3"><label class="title" style="font-weight: bolder;">{{ t.fa.referenceDate | translate }}</label></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"><input matInput type="text"> {{ t.fa.from | translate }}</div>
+      <div class="col-md-3"><input matInput type="text"> {{ t.fa.to | translate }}</div>
+    </div>
+
       <div class="row">
           <div class="col-md-12 col-lg-12">
             <div class="form-group">

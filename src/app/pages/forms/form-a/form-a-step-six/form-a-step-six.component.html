@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-8 col-lg-8">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.last14daysSymptom | translate }}</mat-label>
+            <label class="title">{{ t.fa.last14daysSymptom | translate }}</label>
             <input matInput formControlName="sixWeekRefDate" autocomplete="off">
           </mat-form-field>
         </div>
@@ -32,14 +32,14 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.name | translate }}</mat-label>
+            <label class="title">{{ t.fa.name | translate }}</label>
             <input matInput formControlName="ifYesName" autocomplete="off">
           </mat-form-field>
         </div>
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.relative | translate }} </mat-label>
+            <label class="title"> {{ t.fa.relative | translate }} </label>
             <input matInput formControlName="ifYesRelation" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -48,14 +48,14 @@
       <div class="row">
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.hospitalization | translate }}</mat-label>
+            <label class="title">{{ t.fa.hospitalization | translate }}</label>
             <input matInput formControlName="ifYesHospitalizationDate" autocomplete="off">
           </mat-form-field>
         </div>
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.visitedPlaceCountry | translate }} </mat-label>
+            <label class="title"> {{ t.fa.visitedPlaceCountry | translate }} </label>
             <input matInput formControlName="hotspotCountryName" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -76,7 +76,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.ifYesWhen | translate }}</mat-label>
+            <label class="title">{{ t.fa.ifYesWhen | translate }}</label>
             <input matInput formControlName="ifYesWhereAndWhen" autocomplete="off">
           </mat-form-field>
         </div>
@@ -96,7 +96,7 @@
       <div class="row">
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.personName | translate }}</mat-label>
+            <label class="title">{{ t.fa.personName | translate }}</label>
             <input matInput formControlName="ifYesWhereAndWhen" autocomplete="off">
           </mat-form-field>
         </div>
@@ -117,7 +117,7 @@
       <div class="row">
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.personName | translate }}</mat-label>
+            <label class="title">{{ t.fa.personName | translate }}</label>
             <input matInput formControlName="ifYesWithWhomWhereAndWhen" autocomplete="off">
 
           </mat-form-field>
@@ -125,8 +125,8 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.origin | translate }} </mat-label>
-            <input matInput formControlName="additionalInfo" placeholder="दिन/महिना/वर्ष">
+            <label class="title"> {{ t.fa.origin | translate }} </label>
+            <textarea matInput formControlName="additionalInfo"></textarea>
           </mat-form-field>
         </div>
       </div>

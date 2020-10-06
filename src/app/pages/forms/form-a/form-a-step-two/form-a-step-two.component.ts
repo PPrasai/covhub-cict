@@ -17,6 +17,10 @@ export class FormAStepTwoComponent implements OnInit {
     ifNotWhyTest: new FormControl(''),
     ifYesWhen: new FormControl(''),
 
+    temp: new FormControl(null),
+    cboxDegreeC: new FormControl(false),
+    cboxDegreeF: new FormControl(false),
+
     cboxHistoryOfFeverChills: new FormControl(false),
     cboxGeneralWeakness: new FormControl(false),
     cboxCough: new FormControl(false),

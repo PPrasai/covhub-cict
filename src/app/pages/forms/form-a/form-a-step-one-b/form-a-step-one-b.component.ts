@@ -48,7 +48,9 @@ export class FormAStepOneBComponent implements OnInit {
     province: new FormControl(null),
     district: new FormControl(null),
     municipality: new FormControl(null),
-    ward: new FormControl(null)
+    ward: new FormControl(null),
+    tole: new FormControl(null),
+    currentLocation: new FormControl(null)
   });
 
   provinceChanged(event: any) {

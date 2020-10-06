@@ -17,7 +17,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.sampleCollectionDate | translate }}</mat-label>
+            <label class="title">{{ t.fa.sampleCollectionDate | translate }}</label>
             <input matInput formControlName="sampleCollectionDate" autocomplete="off">
             <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
           </mat-form-field>
@@ -25,7 +25,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.sampleSendDate | translate }} </mat-label>
+            <label class="title"> {{ t.fa.sampleSendDate | translate }} </label>
             <input matInput formControlName="sampleDispatchDate" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -34,23 +34,26 @@
 
 
       <div class="row">
-
-        <div class="col-md-4 col-lg-4">
-          <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.resultsDate | translate }}</mat-label>
-            <input matInput formControlName="labTestResultDate" autocomplete="off">
-          </mat-form-field>
-        </div>
-
-
-
-
-
-        <div class="col-md-4 col-lg-4">
-          <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.results | translate }} </mat-label>
-            <input matInput formControlName="labTestResult" placeholder="दिन/महिना/वर्ष">
-          </mat-form-field>
+        <div class="col-md-12">
+          <nb-card>
+            <nb-card-header>यदि नमुना जाँचको नतिजा थाहा भयो भने</nb-card-header>
+            <nb-card-body>
+              <div class="row">
+                <div class="col-md-3 col-lg-3">
+                  <mat-form-field appearance="fill" class="form-a">
+                    <label class="title">{{ t.fa.resultsDate | translate }}</label>
+                    <input matInput formControlName="labTestResultDate" autocomplete="off">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                  <mat-form-field appearance="fill" class="form-a">
+                    <label class="title"> {{ t.fa.results | translate }} </label>
+                    <input matInput formControlName="labTestResult" placeholder="दिन/महिना/वर्ष">
+                  </mat-form-field>
+                </div>
+              </div>
+            </nb-card-body>
+          </nb-card>
         </div>
 
       </div>
@@ -71,7 +74,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.sampleCollectionDate | translate }}</mat-label>
+            <label class="title">{{ t.fa.sampleCollectionDate | translate }}</label>
             <input matInput formControlName="oropharyngealSampleCollectionDate" autocomplete="off">
             <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
           </mat-form-field>
@@ -79,7 +82,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.sampleSendDate | translate }} </mat-label>
+            <label class="title"> {{ t.fa.sampleSendDate | translate }} </label>
             <input matInput formControlName="oropharyngealSampleDispatchDate" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -91,7 +94,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.resultsDate | translate }}</mat-label>
+            <label class="title">{{ t.fa.resultsDate | translate }}</label>
             <input matInput formControlName="oropharyngealLabTestResultDate" autocomplete="off">
           </mat-form-field>
         </div>
@@ -102,7 +105,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.results | translate }} </mat-label>
+            <label class="title"> {{ t.fa.results | translate }} </label>
             <input matInput formControlName="oropharyngealLabTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -125,7 +128,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.sampleCollectionDate | translate }}</mat-label>
+            <label class="title">{{ t.fa.sampleCollectionDate | translate }}</label>
             <input matInput formControlName="otherSampleCollectionDate" autocomplete="off">
             <!-- <mat-hint>E.g. Lalit:324234</mat-hint> -->
           </mat-form-field>
@@ -133,7 +136,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.sampleSendDate | translate }} </mat-label>
+            <label class="title"> {{ t.fa.sampleSendDate | translate }} </label>
             <input matInput formControlName="otherSampleDispatchDate" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -145,7 +148,7 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label>{{ t.fa.resultsDate | translate }}</mat-label>
+            <label class="title">{{ t.fa.resultsDate | translate }}</label>
             <input matInput formControlName="otherLabTestResultDate" autocomplete="off">
           </mat-form-field>
         </div>
@@ -156,14 +159,14 @@
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.results | translate }} </mat-label>
+            <label class="title"> {{ t.fa.results | translate }} </label>
             <input matInput formControlName="otherLabTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
         <div class="col-md-4 col-lg-4">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.others2 | translate }} </mat-label>
+            <label class="title"> {{ t.fa.others2 | translate }} </label>
             <input matInput formControlName="otherTestSpecification" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
@@ -184,7 +187,15 @@
           </div>
         </div>
 
+        <div class="col-md-6 col-lg-6">
+          <div class="form-a">
+            <label class="title">If Non-NPHL, specify</label>
+            <input matInput formControlName="nonNPHLSpecs" autocomplete="off">
+          </div>
+        </div>
+      </div>
 
+      <div class="row">
          <div class="col-md-6 col-lg-6">
           <div class="form-a">
             <label class="title">{{ t.fa.lab | translate }}</label>
@@ -199,14 +210,14 @@
       <div class="row">
         <div class="col-md-6 col-lg-6">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.testName | translate }} </mat-label>
+            <label class="title"> {{ t.fa.testName | translate }} </label>
             <input matInput formControlName="ifYesTestName" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>
 
         <div class="col-md-6 col-lg-6">
           <mat-form-field appearance="fill" class="form-a">
-            <mat-label> {{ t.fa.results2 | translate }} </mat-label>
+            <label class="title"> {{ t.fa.results2 | translate }} </label>
             <input matInput formControlName="ifYesTestResult" placeholder="दिन/महिना/वर्ष">
           </mat-form-field>
         </div>

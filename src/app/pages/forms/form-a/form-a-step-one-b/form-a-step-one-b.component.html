@@ -101,6 +101,22 @@
             >
           </nb-select>
         </div>
+
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <mat-label> {{ t.fa.tole | translate }}</mat-label>
+            <input matInput autocomplete="off" formControlName="tole">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+            <mat-form-field appearance="fill" class="form-a">
+              <label class="title"> {{ t.fa.currentLocation | translate }}</label>
+              <input matInput autocomplete="off" formControlName="currentLocation">
+            </mat-form-field>
+          </div>
       </div>
 
     </nb-card-body>

@@ -33,6 +33,7 @@ export class FormAStepThreeComponent implements OnInit {
     otherTestSpecification: new FormControl(''),
 
     rbLabType: new FormControl(''),
+    nonNPHLSpecs: new FormControl(null),
     rbAnyOtherTestLab: new FormControl(''),
     ifYesTestName: new FormControl(''),
     ifYesTestResult: new FormControl('')
