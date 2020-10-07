@@ -5,7 +5,7 @@ import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.
 
 import { FormACTData, FormACTDataMeetLocation, FormACTDataContactIntimacy } from '../../../../@models/cict/forms/form-a-ct-model';
 import { FormAService } from '../form-a.service';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'cov-form-a-step-nine',
@@ -44,12 +44,32 @@ export class FormAStepNineComponent implements OnInit {
     contactPhone: 0
   }];
 
+  contactsFG: FormGroup[];
+
   constructor(public t: TranslationServiceEn,
     public formAService: FormAService) {
       this.formAService.newFormFlag$.subscribe(flag => {
         if (flag) {
-          console.log('STEP 9: prepare data instruction received');
-          this.formAService.aggregateFormData(new FormGroup({}));
+
+          this.contactsFG = this.contacts.map(contact => {
+            return new FormGroup({
+              sno: new FormControl(contact.sno),
+              fname: new FormControl(contact.fname),
+              lname: new FormControl(contact.lname),
+              gender: new FormControl(contact.gender),
+              age: new FormControl(contact.age),
+              caseRelation: new FormControl(contact.caseRelation),
+              contactMeetLocation: new FormControl(contact.contactMeetLocation),
+              lastContactDate: new FormControl(contact.lastContactDate),
+              contactType: new FormControl(contact.contactType),
+              contactAddress: new FormControl(contact.contactAddress),
+              contactPhone: new FormControl(contact.contactPhone),
+            });
+          });
+
+          console.log('STEP 9: prepare data instruction received. DIFFERENTLY.');
+          // this.formAService.aggregateFormData(new FormGroup({}));
+          this.formAService.prepareContactTracingData(this.contactsFG);
         }
       });
     }

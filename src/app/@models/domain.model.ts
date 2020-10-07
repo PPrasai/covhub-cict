@@ -24,7 +24,8 @@ export enum Databases {
   roles = 'roles',
   cict = 'cict',
   form_a = 'form_a',
-  new_case = 'new_case'
+  new_case = 'new_case',
+  contact_tracing = 'contact_tracing'
 }
 
 export interface ExistingDoc {
