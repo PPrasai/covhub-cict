@@ -18,11 +18,24 @@ export class ContactTracingService {
     this.dataService.getAll().then(data => {
       if (data.rows.length > 0) {
         data.rows.forEach(row  => {
-          this.contactTracingInfoData$.next([...this.contactTracingInfoData$.getValue(), ... [row.doc as unknown as FormACTData]]);
+          this.contactTracingInfoData$.next([...this.contactTracingInfoData$.getValue(), ... [this.flatten(row.doc) as unknown as FormACTData]]);
         });
       }
     })
   }
+
+  flatten(obj: any) {
+    return Object.keys(obj).reduce((acc, current) => {
+      const key = `${current}`;
+      const currentValue = obj[current];
+      if (Array.isArray(currentValue) || Object(currentValue) === currentValue) {
+        Object.assign(acc, this.flatten(currentValue));
+      } else {
+        acc[key] = currentValue;
+      }
+      return acc;
+    }, {});
+  };
 
   getContactTracingData(): Observable<FormACTData[]> {
     return this.contactTracingInfoData$.asObservable();
