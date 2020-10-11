@@ -10,26 +10,7 @@ import { NewCaseFormeta } from './new-case/new-case.formeta';
 export class ActiveTasksService {
 
 
-  private activeTasksInfoArr: ActiveTasksInfo[] = [
-    // {
-    //   case: 'Ram Thapa',
-    //   caseInvestigator: 'Dr. Hari Bahadur',
-    //   time: '3 Hr.'
-    // },
-    // {case
-    //   time: '2 Hr.'
-    // },
-    // {
-    //   case: 'Bipin Sitaula',
-    //   caseInvestigator: 'Dr. Nirmala KC',
-    //   time: '1 Hr.'
-    // },
-    // {
-    //   case: 'Jiwan Bista',
-    //   caseInvestigator: 'Dr. Ram Krishna Dhakal',
-    //   time: '6 Hr.'
-    // }
-  ];
+  private activeTasksInfoArr: ActiveTasksInfo[] = [];
 
   private activeTasksInfoData$: BehaviorSubject<ActiveTasksInfo[]>;
 
@@ -39,8 +20,7 @@ export class ActiveTasksService {
     this.activeTasksInfoData$ = new BehaviorSubject(this.activeTasksInfoArr);
     this.caseService.getAll().then(data => {
       data.rows.forEach(row => {
-        console.log('************')
-        console.log(row.doc);
+        // console.log(row);
         this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ... [row.doc as unknown as ActiveTasksInfo]]);
       });
     })
@@ -54,8 +34,11 @@ export class ActiveTasksService {
     this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ...[{
       case: task.case,
       caseInvestigator: task.caseInvestigator,
-      time: Math.round((new Date().getTime() - task.reportedDate.getTime()) / 1000 / 60 / 60).toString() + ' Hr.'
+      time: Math.round((new Date().getTime() - task.reportedDate.getTime()) / 1000 / 60 / 60).toString() + ' Hr.',
+      caseId: task._id,
+      formId: task.formId
     }]]);
 
-    this.caseService.addAll(task);  }
+    this.caseService.addAll(task);
+  }
 }

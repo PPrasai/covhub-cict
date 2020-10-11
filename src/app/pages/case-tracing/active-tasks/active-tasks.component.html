@@ -11,7 +11,7 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Case</th>
                     <td mat-cell *matCellDef="let activeCase">
                       {{ activeCase.case }}
-                      <a href="#" (click)="showFormAWindow($event)">
+                      <a href="#" (click)="showFormAWindow($event, activeCase.caseId || activeCase._id)">
                         <span class="badge badge-primary">
                           Form A
                         </span>

@@ -3,7 +3,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 
 import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 
-import { FormACTData, FormACTDataMeetLocation, FormACTDataContactIntimacy } from '../../../../@models/cict/forms/form-a-ct-model';
+import { FormACTDataMeetLocation, FormACTDataContactIntimacy } from '../../../../@models/cict/forms/form-a-ct-model';
+import { FormACTData } from '../../../../@models/cict/forms/form-a-ct-model';
 import { FormAService } from '../form-a.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -31,6 +32,7 @@ export class FormAStepNineComponent implements OnInit {
   @Output() saveFormAEvent = new EventEmitter<FormACTData[]>();
 
   contacts: FormACTData[] = [{
+    caseId: "none",
     sno: "",
     fname: "",
     lname: "",
@@ -53,6 +55,7 @@ export class FormAStepNineComponent implements OnInit {
 
           this.contactsFG = this.contacts.map(contact => {
             return new FormGroup({
+              caseId: new FormControl(contact.caseId),
               sno: new FormControl(contact.sno),
               fname: new FormControl(contact.fname),
               lname: new FormControl(contact.lname),
@@ -79,6 +82,7 @@ export class FormAStepNineComponent implements OnInit {
 
   addContact(event): void {
     this.contacts.unshift({
+      caseId: "none",
       sno: "",
       fname: "",
       lname: "",
@@ -94,7 +98,10 @@ export class FormAStepNineComponent implements OnInit {
   }
 
   saveFormA(event): void {
+    console.log('oooooooooooooooooo');
+    console.log(this.contacts);
     this.saveFormAEvent.emit(this.contacts);
+    console.log('oooooooooooooooooo');
   }
 
 

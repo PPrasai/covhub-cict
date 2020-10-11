@@ -30,13 +30,15 @@ export class FormAService {
     this.formsResponded += 1;
     this.fullDataObject = {...this.fullDataObject, ...formGroup.value};
 
+    console.log(this.fullDataObject);
+
     if (this.formsResponded == 11) {
       this.formDataService.addAll(
         [this.fullDataObject]).then(result => {
         this.formsResponded = 0;
 
         if (result[0].id) {
-          this.createContactTracingEntry(result[0].id);
+          this.createContactTracingEntry(result[0].id, formGroup.value.caseId);
         }
       })
     }
@@ -48,12 +50,13 @@ export class FormAService {
     });
   }
 
-  createContactTracingEntry(_id: string) {
+  createContactTracingEntry(formId: string, caseId: string) {
     console.log('new contact tracing stuff!');
     this.contactDataSerivice.addAll([{
-      form_id: _id,
+      form_id: formId,
+      case_id: caseId,
       creationDate: new Date(),
-      contacts: this.contacts
+      ...this.contacts
     }] as Doc[]).then(result => {
       console.log('Contact data saved.');
       console.log('New resource ID: ', result[0].id);

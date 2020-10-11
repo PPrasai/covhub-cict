@@ -3,6 +3,10 @@ import { NepaliDate, MatchA, District, Municipality, Ward, Tole } from '../../..
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export interface NewCaseFormeta {
+  _id: string;
+  formId?: string;
+  ctId?: string;
+
   reportedDate: Date;
   _reportedDate?: NepaliDate;
 
@@ -31,6 +35,7 @@ export interface NewCaseFormeta {
 
 
 export const makeNewCaseFormModel: () => NewCaseFormeta = () => ({
+  _id: null,
   reportedDate: null,
   reportedInstitution: '',
   case: '',

@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationServiceEn } from '../../../services/i18n/translation-gen.service';
 
+import { v1, v3, v4, v5 } from 'uuid';
+
 @Component({
   selector: 'cov-active-tasks',
   templateUrl: './active-tasks.component.html',
@@ -30,14 +32,15 @@ export class ActiveTasksComponent implements OnInit {
     this.activeTasksService.addOne(task);
   }
 
-  showFormAWindow(event) {
+  showFormAWindow(event, case_id) {
+    console.log(case_id);
     const dialogRef = this.dialog.open(FormAComponent,
       {
         width: '80vw',
         height: '90vh',
         data: {
           title: this.translationService.get(this.t.fb.addNewCase),
-          newId: '12345'
+          newId: case_id
         }
       }
     );

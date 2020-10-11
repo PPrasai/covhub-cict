@@ -9,10 +9,15 @@ import { NewCaseFormeta } from './new-case.formeta';
 })
 export class CaseService {
   private newCaseFlag = false;
+  private newCaseId: string;
+
   public newCaseFlag$: BehaviorSubject<Boolean>;
+  public newCaseIdFlag$: BehaviorSubject<string>;
+
   private allCases = {};
   constructor(private dataService: CaseDataService) {
     this.newCaseFlag$ = new BehaviorSubject(this.newCaseFlag);
+    this.newCaseIdFlag$ = new BehaviorSubject(this.newCaseId);
 
     this.dataService.getAll().then(data => {
       this.allCases = data;
@@ -25,7 +30,7 @@ export class CaseService {
 
   addAll(newCase: NewCaseFormeta) {
     this.dataService.addAll([newCase]).then(result => {
-      console.log(result);
+      return result[0].id;
     })
   }
 }

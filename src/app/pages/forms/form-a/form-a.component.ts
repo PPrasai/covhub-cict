@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit, EventEmitter, Output, Inject } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 import { FormACTData } from '../../../@models/cict/forms/form-a-ct-model';
@@ -31,7 +33,8 @@ export class FormAComponent implements OnInit, OnDestroy {
     private translator: TranslateService,
     public t: TranslationServiceEn,
     public formAService: FormAService,
-    private contactTracingService: ContactTracingService
+    private contactTracingService: ContactTracingService,
+    @Inject(MAT_DIALOG_DATA) public dialogData: any
     ) {
     translator.use('en');
     translator.get(t.fab.thahaChhaina)
@@ -79,8 +82,19 @@ export class FormAComponent implements OnInit, OnDestroy {
   formValueChanged(formValue: any) {}
 
   newFormAData(data: FormACTData[]) {
+    console.log('outside map');
+    console.log(data);
+
+    data = data.map(formData => {
+      console.log('inside map')
+      console.log(formData);
+      formData.caseId = this.dialogData.newId;
+      console.log('inside map after caseId');
+      console.log(formData);
+      return formData;
+    });
+
     this.contactTracingService.addOne(data);
     this.formAService.prepareAllFormData();
   }
-
 }

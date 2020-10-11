@@ -11,6 +11,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { makeNewCaseFormModel, NewCaseFormeta, makeNewCaseFormGroup } from './new-case.formeta';
 import { CaseService } from './case.service';
 
+import { v1 } from 'uuid';
+
 
 
 const OnDestroySubject = Symbol('OnDestroySubject');
@@ -41,7 +43,7 @@ export class NewCaseComponent implements OnInit, OnDestroy {
   newCaseFormGroup: FormGroup;
 
   form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
+    _id: new FormControl(v1()),
     reportedDate: new FormControl(''),
     reportedInstitution: new FormControl(''),
     case: new FormControl(''),
@@ -84,6 +86,7 @@ export class NewCaseComponent implements OnInit, OnDestroy {
   addNewTask(_: any) {
     this.saveToCache = false;
     this.newCaseEvent.emit(this.form.value);
+    console.log('saving new case with _id: ', this.form.get('_id'));
   }
 
   changeDestProvince(event: string) {

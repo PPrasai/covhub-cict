@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 
 export interface ContactTracingInfo {
+  caseId: string;
+  formId: string;
   contact: string;
   assignedTo: string;
   case: string;

@@ -14,6 +14,7 @@ export enum FormACTDataContactIntimacy {
 }
 
 export interface FormACTData {
+  caseId?: string,
   sno: string,
   fname: string,
   lname: string,

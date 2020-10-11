@@ -8,4 +8,6 @@ export interface ActiveTasksInfo {
   case: string;
   caseInvestigator: string;
   time: string;
+  caseId: string;
+  formId: string;
 }
