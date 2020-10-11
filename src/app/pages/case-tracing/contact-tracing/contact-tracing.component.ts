@@ -34,7 +34,6 @@ export class ContactTracingComponent implements OnInit, OnDestroy {
         this.data = data;
         // this.displayedColumns = Object.keys(data[0]);
         this.displayedColumns = ['form_id', 'creationDate', 'case'];
-        console.log(data);
       }
     });
   }

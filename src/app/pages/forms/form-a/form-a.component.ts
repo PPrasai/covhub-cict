@@ -86,11 +86,7 @@ export class FormAComponent implements OnInit, OnDestroy {
     console.log(data);
 
     data = data.map(formData => {
-      console.log('inside map')
-      console.log(formData);
       formData.caseId = this.dialogData.newId;
-      console.log('inside map after caseId');
-      console.log(formData);
       return formData;
     });
 

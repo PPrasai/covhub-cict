@@ -98,10 +98,7 @@ export class FormAStepNineComponent implements OnInit {
   }
 
   saveFormA(event): void {
-    console.log('oooooooooooooooooo');
-    console.log(this.contacts);
     this.saveFormAEvent.emit(this.contacts);
-    console.log('oooooooooooooooooo');
   }
 
 

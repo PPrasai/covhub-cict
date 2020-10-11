@@ -18,11 +18,20 @@ export class ActiveTasksService {
     private caseService: CaseService
   ) {
     this.activeTasksInfoData$ = new BehaviorSubject(this.activeTasksInfoArr);
+
     this.caseService.getAll().then(data => {
       data.rows.forEach(row => {
         // console.log(row);
         this.activeTasksInfoData$.next([...this.activeTasksInfoData$.getValue(), ... [row.doc as unknown as ActiveTasksInfo]]);
       });
+    })
+
+    this.caseService.getChangeListener().subscribe(change => {
+      let noItem = this.activeTasksInfoData$.getValue().filter(value => {
+        return change.change.docs[0]._id != value['_id']
+      });
+
+      this.activeTasksInfoData$.next([change.change.docs[0]].concat(noItem) as ActiveTasksInfo[]);
     })
   }
 

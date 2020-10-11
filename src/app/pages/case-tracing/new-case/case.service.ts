@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CaseDataService } from '../../../services/db/case-data.service';
 import { NewCaseFormeta } from './new-case.formeta';
@@ -26,6 +26,10 @@ export class CaseService {
 
   getAll() {
     return this.dataService.getAll();
+  }
+
+  getChangeListener(): EventEmitter<any> {
+    return this.dataService.getChangeListener();
   }
 
   addAll(newCase: NewCaseFormeta) {

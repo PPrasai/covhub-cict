@@ -45,6 +45,7 @@ export class FormAService {
   }
 
   prepareContactTracingData(formGroups: FormGroup[]) {
+
     this.contacts = formGroups.map(formGroup => {
       return formGroup.value;
     });
@@ -52,12 +53,19 @@ export class FormAService {
 
   createContactTracingEntry(formId: string, caseId: string) {
     console.log('new contact tracing stuff!');
-    this.contactDataSerivice.addAll([{
-      form_id: formId,
-      case_id: caseId,
-      creationDate: new Date(),
-      ...this.contacts
-    }] as Doc[]).then(result => {
+    let addData = [];
+    this.contacts.map(contact => {
+      addData.push({
+        form_id: formId,
+        case_id: caseId,
+        creationDate: new Date(),
+        ...contact
+      })
+    });
+
+    console.log(addData);
+
+    this.contactDataSerivice.addAll(addData as Doc[]).then(result => {
       console.log('Contact data saved.');
       console.log('New resource ID: ', result[0].id);
     })
