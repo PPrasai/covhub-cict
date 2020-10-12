@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslationServiceEn } from '../../../../services/i18n/translation-gen.service';
 
 @Component({
   selector: 'cov-form-a-step-ten',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormAStepTenComponent implements OnInit {
 
-  constructor() { }
+  constructor(public t: TranslationServiceEn) { }
 
   ngOnInit(): void {
+  }
+
+  newFormAData() {
+    console.log('new form a step 10');
   }
 
 }
