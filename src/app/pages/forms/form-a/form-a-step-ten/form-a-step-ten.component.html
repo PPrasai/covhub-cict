@@ -1,0 +1,165 @@
+<form [formGroup]="form">
+  <nb-card class="form-cont">
+    <nb-card-body>
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <mat-form-field appearance="fill" class="form-a">
+            <label class="title">{{ t.fa.fa11.reportResendDate | translate }}</label>
+            <input matInput formControlName="reportResendDate" autocomplete="off">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.preDischargeOrDeathSymptomatic | translate }}</label>
+            <nb-radio-group formControlName="rbPreDischargeOrDeathSymptomatic" id="inputCaseStatus" name="pre-discharge-or-death-symptomatic" class="row">
+              <nb-radio value="No">{{ t.fa.fa11.noPast | translate }}</nb-radio>
+              <nb-radio value="Yes">{{ t.fa.fa11.yesPast | translate }}</nb-radio>
+              <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <label class="title">{{ t.fa.fa11.ifYesSymptomDate | translate }}</label>
+          <input matInput formControlName="ifYesSymptomDate" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row" style="background-color: lightgray;">
+        <div class="col-md-12 col-lg-12">
+          <div class="form-a">
+            <label class="title" style="color: black; font-weight: bold;">Clinical Course</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <!-- <div class="form-a"> -->
+            <label class="title">{{ t.fa.fa11.hospitalized | translate }}</label>
+            <nb-radio-group formControlName="rbHospitalized" id="inputCaseStatus" name="hospitalized" class="row">
+              <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+              <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+              <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+            </nb-radio-group>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 col-lg-5">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.ifHospitalizedDate | translate }}</label>
+            <input matInput formControlName="ifHospitalizedDate" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.isCaseInICU | translate }}</label>
+            <nb-radio-group formControlName="rbCaseInICU" id="inputCaseStatus" name="caseInICU" class="row">
+              <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+              <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+              <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.isCaseInVentilation | translate }}</label>
+            <nb-radio-group formControlName="rbCaseInVentilation" id="inputCaseStatus" name="caseInVentilation" class="row">
+              <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+              <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+              <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.doesCaseHaveMembraneOxy | translate }}</label>
+            <nb-radio-group formControlName="rbCaseHaveMembraneOxy" id="inputCaseStatus" name="caseHaveMembraneOxy" class="row">
+              <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+              <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+              <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.healthResult | translate }}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <nb-radio-group formControlName="rbHealthResult" id="inputCaseStatus" name="healthResult" class="row">
+            <nb-radio value="Healthy">{{ t.fa.fa11.healthy | translate }}</nb-radio>
+            <nb-radio value="Dead">{{ t.fa.fa11.dead | translate }}</nb-radio>
+            <nb-radio value="Don't Know">{{ t.fa.fa11.noIdea | translate }}</nb-radio>
+            <nb-radio value="Published">{{ t.fa.fa11.published | translate }}</nb-radio>
+            <nb-radio value="Ran Away">{{ t.fa.fa11.ranAwayFromHosp | translate }}</nb-radio>
+            <nb-radio value="Other">{{ t.fa.fa11.other | translate }}</nb-radio>
+          </nb-radio-group>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.ifOtherLetKnow | translate }}</label>
+            <input matInput formControlName="ifOtherLetKnow" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.dischargeDate | translate }}</label>
+            <input matInput formControlName="dischargeDate" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.ifDischargedLastTestDate | translate }}</label>
+            <input matInput formControlName="ifDischargedLastTestDate" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <div class="form-a">
+            <label class="title">{{ t.fa.fa11.labTestResult | translate }}</label>
+            <nb-radio-group formControlName="rbLabTestResult" id="inputCaseStatus" name="labTestResult" class="row">
+              <nb-radio value="Positive">{{ t.fa.fa11.positive | translate }}</nb-radio>
+              <nb-radio value="Negative">{{ t.fa.fa11.negative | translate }}</nb-radio>
+              <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+            </nb-radio-group>
+          </div>
+        </div>
+      </div>
+
+    </nb-card-body>
+  </nb-card>
+</form>

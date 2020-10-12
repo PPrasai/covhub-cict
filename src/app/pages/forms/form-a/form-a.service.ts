@@ -32,7 +32,7 @@ export class FormAService {
 
     console.log(this.fullDataObject);
 
-    if (this.formsResponded == 11) {
+    if (this.formsResponded == 12) {
       this.formDataService.addAll(
         [this.fullDataObject]).then(result => {
         this.formsResponded = 0;

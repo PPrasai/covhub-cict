@@ -135,6 +135,19 @@
                 </nb-accordion-item-body>
               </nb-accordion-item>
             </nb-accordion>
+
+            <nb-accordion>
+              <nb-accordion-item>
+                <nb-accordion-item-header>{{ t.fah.headinga11 | translate }}</nb-accordion-item-header>
+                <nb-accordion-item-body>
+
+
+                  <cov-form-a-step-ten (saveFormAEvent)="newFormAData($event)"></cov-form-a-step-ten>
+
+
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+            </nb-accordion>
             <cov-form-hr-break></cov-form-hr-break>
             <nb-card class="prev-next">
               <div class="btn-group">

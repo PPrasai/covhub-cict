@@ -62,6 +62,7 @@ import { FormAStepSevenComponent } from './form-a/form-a-step-seven/form-a-step-
 import { FormAStepEightTwoComponent } from './form-a/form-a-step-eight-two/form-a-step-eight-two.component';
 import { FormAStepNineComponent } from './form-a/form-a-step-nine/form-a-step-nine.component';
 import { FormAStepFiveComponent } from './form-a/form-a-step-five/form-a-step-five.component';
+import { FormAStepTenComponent } from './form-a/form-a-step-ten/form-a-step-ten.component';
 
 
 const MaterialModules = [
@@ -137,6 +138,7 @@ const MaterialModules = [
     FormAStepSevenComponent,
     FormAStepEightTwoComponent,
     FormAStepNineComponent,
+    FormAStepTenComponent,
   ],
 })
 export class HealthFormsModule { }
