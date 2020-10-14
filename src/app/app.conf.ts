@@ -8,7 +8,7 @@ export const authSetup = {
     key: 'token',
     class: NbAuthSimpleToken,
   },
-  baseEndpoint: '/auth/',
+  baseEndpoint: '/auth',
   login: {
     endpoint: '/sign-in',
     method: 'post',

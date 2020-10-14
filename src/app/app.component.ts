@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.analytics.trackPageViews();
     this.seoService.trackCanonicalChanges();
-    this.authService.publicLogin(); // login as a public user, read only & only for public buckets
+    // this.authService.publicLogin(); // login as a public user, read only & only for public buckets
   }
 
   useLanguage(lang: string) {

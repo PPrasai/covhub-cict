@@ -9,7 +9,9 @@ import { AuthService } from '../core/auth.service';
 })
 export class AuthPipe implements PipeTransform {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+    console.log('in auth.pipe');
+  }
 
   transform(url: string): Observable<string> {
     if (!url) {
@@ -17,6 +19,8 @@ export class AuthPipe implements PipeTransform {
     }
     return this.authService.getToken()
       .pipe(map((token: NbAuthToken) => {
+        console.log('in auth.pipe');
+        console.log(token);
         const separator = url.indexOf('?') > 0 ? '&' : '?';
         return `${url}${separator}token=${token.getValue()}`;
       }));

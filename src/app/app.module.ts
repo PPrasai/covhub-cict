@@ -26,6 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { authSetup, formSetup } from './app.conf';
 
+import { AuthGuard } from './@auth/guards/auth.guard';
+
 export class WebpackTranslateLoader implements TranslateLoader {
   getTranslation(lang: 'en' | 'np') {
     return from(
@@ -63,8 +65,7 @@ export class WebpackTranslateLoader implements TranslateLoader {
     }),
     DashboardModule,
     NbAuthModule.forRoot({
-      strategies: [
-        NbPasswordAuthStrategy.setup(authSetup)],
+      strategies: [NbPasswordAuthStrategy.setup(authSetup)],
       forms: formSetup,
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
@@ -72,6 +73,7 @@ export class WebpackTranslateLoader implements TranslateLoader {
   bootstrap: [AppComponent],
   providers: [
     { provide: AppConf, useValue: appConf },
+    AuthGuard,
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

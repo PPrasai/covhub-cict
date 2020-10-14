@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { HOME } from './app.conf';
+import { AuthGuard } from './@auth/guards/auth.guard';
+
+import {
+  NbAuthComponent,
+  NbLoginComponent,
+  NbRegisterComponent,
+  NbLogoutComponent,
+  NbRequestPasswordComponent,
+  NbResetPasswordComponent,
+} from '@nebular/auth';
 
 export const routes: Routes = [
   {
     path: 'hub',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },

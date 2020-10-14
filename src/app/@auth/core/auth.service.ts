@@ -165,10 +165,12 @@ export class AuthService extends NbAuthService {
   getCurrentToken(): AuthToken {
     const token = new AuthToken();
     token.payload = this.autoken(this.userSub.getValue());
+    console.log(token.payload);
     return token;
   }
 
   getToken(): Observable<NbAuthToken> {
+    console.log('getting token');
     return from([this.getCurrentToken()]);
   }
 

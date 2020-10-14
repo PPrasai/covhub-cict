@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NbLoginComponent } from '@nebular/auth';
 import { BasicAuth } from '../../@models/auth-response.model';
 import { AuthService } from '../core/auth.service';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HOME } from '../../app.conf';
 
 @Component({
@@ -13,7 +13,10 @@ import { HOME } from '../../app.conf';
 })
 export class LoginComponent extends NbLoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  })
 
   loading = false;
 

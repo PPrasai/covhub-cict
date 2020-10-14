@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../@auth/core/auth.service';
 import { HOME } from '../../app.conf';
 
@@ -8,17 +9,23 @@ import { HOME } from '../../app.conf';
 })
 export class AuthGuard implements CanActivate {
 
+  authenticatedObservable$: Observable<boolean>;
+  authenticatedFlag: Boolean;
+
   constructor(
     private router: Router,
     private authService: AuthService,
-  ) { }
+  ) {
+    this.authenticatedObservable$ = this.authService.isAuthenticated();
+    this.authenticatedObservable$.subscribe(flag => this.authenticatedFlag = flag)
+  }
 
   canActivate(
     _: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
 
-    if (this.authService.isAuthenticated || !this.authService.isInPublicMode) {
+    if (this.authenticatedFlag) {
       return true;
     }
     this.router.navigate(['auth/login'], {

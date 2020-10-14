@@ -5,8 +5,8 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 import { PagesComponent } from './pages.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 
-const formsModule = () => import('./forms/forms.module')
-  .then(m => m.HealthFormsModule);
+// const formsModule = () => import('./forms/forms.module')
+//   .then(m => m.HealthFormsModule);
 
 const mapsModule = () => import('./maps/maps.module')
   .then(m => m.MapsModule);
@@ -29,11 +29,11 @@ const routes: Routes = [{
       canActivate: [AuthGuard],
       loadChildren: caseTracingModule,
     },
-    {
-      path: 'forms',
-      canActivate: [AuthGuard],
-      loadChildren: formsModule,
-    },
+    // {
+    //   path: 'forms',
+    //   canActivate: [AuthGuard],
+    //   loadChildren: formsModule,
+    // },
     {
       path: 'maps',
       canActivate: [AuthGuard],
