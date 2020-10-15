@@ -25,7 +25,7 @@ export class FormAComponent implements OnInit, OnDestroy {
   formAOneTwo: StepState;
   formathree: StepState;
 
-  @Output() formASaveEvent = new EventEmitter<FormACTData[]>();
+  // @Output() formASaveEvent = new EventEmitter<FormACTData[]>();
 
   // TODO put all the translatable labels in the en.json file for now
   constructor(

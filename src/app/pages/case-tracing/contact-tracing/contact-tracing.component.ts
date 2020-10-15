@@ -42,15 +42,12 @@ export class ContactTracingComponent implements OnInit, OnDestroy {
     // this.dataSub$.unsubscribe();
   }
 
-  showFormB1Window(event) {
+  showFormB1Window(_, index) {
     const dialogRef = this.dialog.open(FormB1Component,
       {
         width: '80vw',
         height: '90vh',
-        data: {
-          title: this.translationService.get(this.t.fb.addNewCase),
-          newId: '12345'
-        }
+        data: this.data[index]
       }
     );
 
