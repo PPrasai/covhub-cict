@@ -24,6 +24,8 @@ export enum Databases {
   roles = 'roles',
   cict = 'cict',
   form_a = 'form_a',
+  form_b1 = 'form_b1',
+  form_b2 = 'form_b2',
   new_case = 'new_case',
   contact_tracing = 'contact_tracing'
 }
