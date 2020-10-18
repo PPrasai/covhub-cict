@@ -1,262 +1,476 @@
-<nb-layout center>
-  <nb-layout-header>Form B1(कन्टयाक्टअन्तर्ाार्ााफारम</nb-layout-header>
-
-  <nb-layout-column>
+<div class="row">
+  <div class="col-md-12">
     <nb-card>
-      <nb-card-body>
+      <nb-card-header class="form-title"> {{ t.fb.formName | translate }}</nb-card-header>
+      <nb-card-body class="no-pad">
+        <form [formGroup]="form">
+          <p>caseko naam {{ caseInfo.caseName }}</p>
+          <p>contactko naam {{ caseInfo.fname + ' ' + caseInfo.lname }}</p>
 
-
-        <div class="col-md-12">
-          <div class="form-group">
-            <label for="inputFirstName" class="label">{{ t.fb.caseName | translate }}</label>
-            <input type="text" nbInput placeholder="नाम र ठेगाना">
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="form-group">
-            <label for="inputFirstName" class="label">{{ t.fb.caseId | translate }}</label>
-            <input type="text" nbInput placeholder="नाम र ठेगाना">
-          </div>
-        </div>
-
-        <div class="col-md-12">
-          <div class="form-group">
-            <label for="inputFirstName" class="label">">{{ t.fb.quarantineName | translate }}</label>
-            <input type="text" nbInput placeholder="नाम र ठेगाना">
-          </div>
-        </div>
-
-        <!--PART 1-->
-
-        <nb-accordion>
-          <nb-accordion-item>
-            <nb-accordion-item-header>{{ t.fb.contactDetail | translate }}</nb-accordion-item-header>
-            <nb-accordion-item-body>
-
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="inputFirstName" class="label">{{ t.fb.contactName | translate }}</label>
-                  <input type="text" nbInput placeholder="">
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.casePersonalInformation | translate }} </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <label class="title">naam</label>
+                      <input matInput autocomplete="off" formControlName="contactName">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <label class="title">case sanga ko sambandha</label>
+                      <input matInput autocomplete="off" formControlName="caseRelation">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <label class="title">janma miti/umer</label>
+                      <input matInput autocomplete="off" formControlName="contactAge">
+                    </mat-form-field>
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="inputFirstName" class="label">{{ t.fb.caseRelation | translate }} </label>
-                  <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <label class="title">linga</label>
+
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="contactGender">
+                      <nb-radio value="Male">{{ t.fb.male | translate }}</nb-radio>
+                      <nb-radio value="Female">{{ t.fb.female | translate }}</nb-radio>
+                      <nb-radio value="Other">{{ t.fb.other | translate }}</nb-radio>
+                    </nb-radio-group>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <label class="title">dharma</label>
+                      <input matInput autocomplete="off" formControlName="contactReligion">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <label class="title">jaat</label>
+                      <input matInput autocomplete="off" formControlName="contactCaste">
+                    </mat-form-field>
+                  </div>
                 </div>
-              </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="inputDate" class="label">{{ t.fb.contactAge | translate }} </label>
-                  <input [nbDatepicker]="datepicker">
-                  <nb-datepicker #datepicker></nb-datepicker> <br />
+                <div class="row" style="margin-top: 10px;">
+                  <label class="title"><strong>हालको ठेगाना</strong></label>
                 </div>
-              </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.province | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Province"
+                    (selectedChange)="provinceChanged($event)"
+                    formControlName="province"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let province of countryProvinces"
+                      [value]="province"
+                      >{{ province }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.district | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select District"
+                    (selectedChange)="districtChanged($event)"
+                    formControlName="district"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let district of districts"
+                      [value]="district"
+                      >{{ district }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.municipality | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Municipality"
+                    (selectedChange)="municipChanged($event)"
+                    formControlName="municipality"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let municipality of municipals"
+                      [value]="municipality"
+                      >{{ municipality }}</nb-option
+                    >
+                  </nb-select>
+
+                  </div>
+                </div>
 
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="" class="label">{{ t.fb.gender | translate}} </label>
-                  <div class="col-sm-6">
-                    <nb-radio-group id="inputCaseStatus" class="row">
-                      <nb-radio>{{ t.fb.male | translate }}</nb-radio>
-                      <nb-radio>{{ t.fb.female | translate }}</nb-radio>
-                      <nb-radio>{{ t.fb.other | translate}}</nb-radio>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.wardNum | translate }} </mat-label>
+                      <nb-select
+                      matRipple
+                      id="inputCountry"
+                      fullWidth
+                      placeholder="Select Ward"
+                      formControlName="wardNum"
+                    >
+                      <nb-option
+                        matRipple
+                        *ngFor="let ward of wards"
+                        [value]="ward"
+                        >{{ ward }}</nb-option
+                      >
+                    </nb-select>
+                  </div>
 
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label> {{ t.fa.tole | translate }}</mat-label>
+                      <input matInput autocomplete="off" formControlName="tole">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                  <label class="title"><strong>स्थायी ठेगाना</strong></label>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                      <mat-label>{{ t.fa.country | translate }} </mat-label>
+                      <nb-select
+                      matRipple
+                      id="inputCountry"
+                      fullWidth
+                      placeholder="Select Country"
+                      (selectedChange)="changeCountry($event)"
+                      formControlName="permCountry"
+                    >
+                      <nb-option
+                        matRipple
+                        *ngFor="let country of countries"
+                        [value]="country"
+                        >{{ country }}</nb-option
+                      >
+                    </nb-select>
+                    </div>
+
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.province | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Province"
+                    (selectedChange)="provinceChanged($event)"
+                    formControlName="permProvince"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let province of countryProvinces"
+                      [value]="province"
+                      >{{ province }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.district | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select District"
+                    (selectedChange)="districtChanged($event)"
+                    formControlName="permDistrict"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let district of districts"
+                      [value]="district"
+                      >{{ district }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.municipality | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Municipality"
+                    (selectedChange)="municipChanged($event)"
+                    formControlName="permMunicipality"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let municipality of municipals"
+                      [value]="municipality"
+                      >{{ municipality }}</nb-option
+                    >
+                  </nb-select>
+
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.wardNum | translate }} </mat-label>
+                      <nb-select
+                      matRipple
+                      id="inputCountry"
+                      fullWidth
+                      placeholder="Select Ward"
+                      formControlName="permWardNum"
+                    >
+                      <nb-option
+                        matRipple
+                        *ngFor="let ward of wards"
+                        [value]="ward"
+                        >{{ ward }}</nb-option
+                      >
+                    </nb-select>
+                  </div>
+
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label> {{ t.fa.tole | translate }}</mat-label>
+                      <input matInput autocomplete="off" formControlName="permTole">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px;">
+                  <label class="title"><strong>{{ t.fb.currentLocation | translate }}</strong></label>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-lg-3">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.phoneNumber | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="currentLocationPhone">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3 col-lg-3">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.phoneOther | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="alternativePhone">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3 col-lg-3">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fab.email | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="email">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-3 col-lg-3">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fa.nationality | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="nationality">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+          </nb-accordion>
+
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.notInPerson | translate }} </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fa.name | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="thirdPersonName">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.contactAge | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="thirdPersonAge">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.address | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="thirdPersonAddress">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.caseRelation | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="thirdPersonCaseRelation">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <label class="title">{{ t.fa.gender | translate }}</label>
+
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="thirdPersonGender">
+                      <nb-radio value="Male">{{ t.fb.male | translate }}</nb-radio>
+                      <nb-radio value="Female">{{ t.fb.female | translate }}</nb-radio>
+                      <nb-radio value="Other">{{ t.fb.other | translate }}</nb-radio>
+                    </nb-radio-group>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.phoneNumber | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="thirdPersonPhone">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+          </nb-accordion>
+
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.exposure | translate }} </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <div class="row">
+                  <label class="title"><strong>{{ t.fb.travelDuringQuarantine | translate }}</strong></label>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="thirdPersonGender">
+                      <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+                      <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+                      <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
                     </nb-radio-group>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="inputFirstName" class="label">धमम </label>
-                  <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <label>{{ t.fb.ifYestravelDate | translate }}</label>
                 </div>
-              </div>
 
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="inputFirstName" class="label">जामतः </label>
-                  <input type="text" nbInput placeholder="">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="inputPhoneNumber1" class="label">ानया सामपारका उोने नुमबेर</label>
-                    <input type="number" nbInput fullWidth id="PhoneNumber1" placeholder="" />
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fa.from | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="contactTravelFromDate">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fa.to | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="contactTravelToDate">
+                    </mat-form-field>
                   </div>
                 </div>
-              </div>
 
-              <nb-accordion>
-                <nb-accordion-item>
-                  <nb-accordion-item-header>{{ t.fb.currentLocation | translate }}</nb-accordion-item-header>
-                  <nb-accordion-item-body>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.travelProvince | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="contactTravelRegion">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.travelCity | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="contactTravelCities">
+                    </mat-form-field>
+                  </div>
+                </div>
 
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.nationality | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
+                <div class="row">
+                  <label class="title"><strong>{{ t.fb.contactWithCoronaPositive | translate }}</strong></label>
+                </div>
 
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.province | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="contactWithCoronaPositive">
+                      <nb-radio value="Yes">{{ t.fa.fa11.yesPast1 | translate }}</nb-radio>
+                      <nb-radio value="No">{{ t.fa.fa11.noPast1 | translate }}</nb-radio>
+                      <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+                    </nb-radio-group>
+                  </div>
+                </div>
 
+                <div class="row">
+                  <label>{{ t.fb.ifYesWhenContact | translate }}</label>
+                </div>
 
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.district | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <input type="text" matInput autocomplete="off" formControlName="contactWithCoronaPositiveDate">
+                    </mat-form-field>
+                  </div>
+                </div>
 
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.wardNum | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <div class="form-group">
+                      <label class="title">{{ t.fb.occupation | translate }}</label>
+                      <nb-card>
+                        <nb-card-body>
+                          <div class="row">
+                            <div class="col-md-2 col-lg-2">
+                              <nb-checkbox formControlName="cboxStudent" matRipple status="basic">{{ t.fa.student | translate}} </nb-checkbox>
+                              <nb-checkbox formControlName="cboxLabTech" matRipple status="basic">{{ t.fa.healthLabWorkers | translate}} </nb-checkbox>
+                              <nb-checkbox formControlName="cboxHealthWorker" matRipple status="basic"> {{ t.fa.healthCareWorker | translate}}</nb-checkbox>
+                              <nb-checkbox formControlName="cboxVet" matRipple status="basic">{{ t.fa.animalHelpWorkers | translate}}</nb-checkbox>
+                            </div>
+                            <div class="col-md-2 col-lg-2">
+                              <nb-checkbox formControlName="cboxHospitality" matRipple status="basic">{{ t.fa.hotelResturant | translate}}</nb-checkbox>
+                              <nb-checkbox formControlName="cboxSanitation" matRipple status="basic"> {{ t.fa.security | translate}}</nb-checkbox>
+                              <nb-checkbox formControlName="cboxSecurity" matRipple status="basic">{{ t.fa.garbageCollection | translate}}</nb-checkbox>
+                              <nb-checkbox formControlName="cboxOther" matRipple status="basic"> {{ t.fa.others | translate}}</nb-checkbox>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <mat-form-field appearance="fill" class="form-a">
+                              <mat-label>{{ t.fa.fa11.other | translate }}</mat-label>
+                              <input matInput autocomplete="off" type="text" formControlName="cboxOtherSpecification">
+                            </mat-form-field>
+                          </div>
+                        </nb-card-body>
+                      </nb-card>
 
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.municipality | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.tole | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-
-
-
-
-
-
-                  </nb-accordion-item-body>
-                </nb-accordion-item>
-              </nb-accordion>
-
-
-
-
-              <nb-accordion>
-                <nb-accordion-item>
-                  <nb-accordion-item-header>{{ t.fb.contactLocation | translate }}</nb-accordion-item-header>
-                    <nb-accordion-item-body>
-
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="inputFirstName" class="label">{{ t.fb.phoneNumber | translate}} </label>
-                          <input type="text" nbInput placeholder="">
+                      <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                          <mat-form-field appearance="fill" class="form-a">
+                            <mat-label>{{ t.fb.organizationName | translate }}</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="workPlaceName">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <mat-form-field appearance="fill" class="form-a">
+                            <mat-label>{{ t.fa.address | translate }}</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="workPlaceAddress">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                          <mat-form-field appearance="fill" class="form-a">
+                            <mat-label>{{ t.fa.phone | translate }}</mat-label>
+                            <input type="text" matInput autocomplete="off" formControlName="workPlacePhone">
+                          </mat-form-field>
                         </div>
                       </div>
-
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="inputFirstName" class="label">{{ t.fb.phoneOther | translate }} </label>
-                          <input type="text" nbInput placeholder="">
-                        </div>
-                      </div>
-
-
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="inputFirstName" class="label">{{ t.fab.email | translate }} </label>
-                          <input type="text" nbInput placeholder="">
-                        </div>
-                      </div>
-
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="inputFirstName" class="label">{{ t.fa.nationality | translate }} </label>
-                          <input type="text" nbInput placeholder="">
-                        </div>
-                      </div>
-
-
-
-
-
-
-                    </nb-accordion-item-body>
-                  </nb-accordion-item>
-                </nb-accordion>
-
-              </nb-accordion-item-body>
-            </nb-accordion-item>
-          </nb-accordion>
-
-
-          <!--PART2-->
-
-          <nb-accordion>
-            <nb-accordion-item>
-              <nb-accordion-item-header>{{ t.fb.personalQuarantineInfo | translate }}</nb-accordion-item-header>
-              <nb-accordion-item-body>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.contactName | translate }} </label>
-                    <input type="text" nbInput placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.caseRelation | translate }}</label>
-                    <input type="text" nbInput placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">{{ t.fb.contactAge | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
-                  </div>
-                </div>
-
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.gender | translate }} </label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fb.male | translate }}</nb-radio>
-                        <nb-radio>{{ t.fb.female | translate }}</nb-radio>
-                        <nb-radio>{{ t.fb.other | translate }}</nb-radio>
-
-                      </nb-radio-group>
                     </div>
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.location | translate }} </label>
-                    <input type="text" nbInput placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.phoneNumber | translate }} </label>
-                    <input type="text" nbInput placeholder="">
                   </div>
                 </div>
 
@@ -264,629 +478,386 @@
             </nb-accordion-item>
           </nb-accordion>
 
-          <!--PART 3-->
+          <label style="margin-top: 15px;" class="title"><strong>{{ t.fb.nextSectionNote | translate }}</strong></label>
+          <ul style="margin-bottom: 15px;">
+            <li>
+              {{ t.fb.ifHealthWorkerGoto4 | translate }}
+            </li>
+            <li>
+              {{ t.fb.ifNotHealthWorkerGoto5 | translate }}
+            </li>
+          </ul>
 
-          <nb-accordion>
-            <nb-accordion-item>
-              <nb-accordion-item-header>{{ t.fb.exposure | translate }} </nb-accordion-item-header>
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.exposedHeathWorkerInfo | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-
-
-
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.travelDuringQuarantine | translate }} </label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-                          <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-                          <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-                      </nb-radio-group>
-                    </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.post | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="hwPost">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.organizationName | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="hwOrgName">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 col-lg-8">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.station | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="hwStation">
+                    </mat-form-field>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label"> {{ t.fb.ifYestravelDate | translate }}</label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <label class="title">{{ t.fb.useOfPPE | translate }}</label>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.travelProvince | translate }} </label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="hwUsePPE">
+                      <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+                      <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+                      <nb-radio value="Don't Know">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-radio>
+                    </nb-radio-group>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.travelCity | translate }}
-                    </label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.ppeIfYesExplain | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="hwUsePPEExplain">
+                    </mat-form-field>
                   </div>
                 </div>
 
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.travelCountry | translate }} </label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-                      </nb-radio-group>
-                    </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.firstContactDate | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="hwFirstContactDate">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.lastContactDate | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="hwLastContactDate">
+                    </mat-form-field>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">{{ t.fb.ifYestravelDate | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.anyRelatedInfo | translate }}</mat-label>
+                      <textarea matInput formControlName="hwAnyRelatedInfo"></textarea>
+                    </mat-form-field>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.travelCountry | translate }}</label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <label class="title">{{ t.fb.typeOfExposure | translate }}</label>
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="hwTypeOfExposure">
+                      <nb-radio value="Close">Close</nb-radio>
+                      <nb-radio value="Casual">Casual</nb-radio>
+                    </nb-radio-group>
                   </div>
                 </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.travelCity | translate }}
-                    </label>
-                    <input type="text" nbInput placeholder="">
-                  </div>
-                </div>
-
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for=""
-                    class="label">{{ t.fb.contactWithCoronaPositive | translate }} </label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fab.bhayo | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.bhayena | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-                      </nb-radio-group>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">{{ t.fb.ifYestravelDate | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">पेशा(स्थानवासंस्थासमेतउल्ेिगने)</label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio> स्वास्थ्यकमी</nb-radio>
-                        <nb-radio>भेटेरीनरी</nb-radio>
-                        <nb-radio>स्वास्थ्यप्रयोगशािाकायमकताम</nb-radio>
-                        <nb-radio> मवद्याथी/मशक्षक</nb-radio>
-                        <nb-radio>सेक्युररटी</nb-radio>
-                        <nb-radio>फोहोरव्यवस्थापनकममचारी</nb-radio>
-                        <nb-radio> होटेि/रेस्टुरेि/बारहरु</nb-radio>
-                        <nb-radio>अन्य</nb-radio>
-
-
-                      </nb-radio-group>
-                    </div>
-                  </div>
-                </div>
-
-
-
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
 
-          <!--PART 4-->
-
-          <nb-accordion>
-            <nb-accordion-item>
-              <nb-accordion-item-header>{{ t.fah.headingb4 | translate }}
-              </nb-accordion-item-header>
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.exposedNonHealthInfo | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <label class="title">{{ t.fb.locationOfContact | translate }}</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <nb-checkbox formControlName="cboxContactHome" matRipple status="basic">{{ t.fa.home | translate}} </nb-checkbox>
+                    <nb-checkbox formControlName="cboxContactTransport" matRipple status="basic">{{ t.fb.transport | translate}} </nb-checkbox>
+                    <nb-checkbox formControlName="cboxContactSchool" matRipple status="basic">{{ t.fb.school | translate}} </nb-checkbox>
+                    <nb-checkbox formControlName="cboxContactAamSabha" matRipple status="basic">{{ t.fb.speechWithPublic | translate}} </nb-checkbox>
+                    <nb-checkbox formControlName="cboxContactOther" matRipple status="basic">{{ t.fc.other | translate}} </nb-checkbox>
+                  </div>
+                </div>
+                <div class="row">
+                  <mat-form-field appearance="fill" class="form-a">
+                    <mat-label>{{ t.fa.fa11.other | translate }}</mat-label>
+                    <input matInput autocomplete="off" type="text" formControlName="cboxContactOtherSpecification">
+                  </mat-form-field>
+                </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.post | translate }}</label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.firstContactDate | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="nhwFirstContactDate">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.lastContactDate | translate }}</mat-label>
+                      <input type="text" matInput autocomplete="off" formControlName="nhwLastContactDate">
+                    </mat-form-field>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">{{ t.fb.organizationName | translate }} </label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <mat-label>{{ t.fb.anyRelatedInfo | translate }}</mat-label>
+                      <textarea matInput formControlName="nhwAnyRelatedInfo"></textarea>
+                    </mat-form-field>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName"
-                    class="label">{{ t.fb.station | translate }}</label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <label class="title">{{ t.fb.typeOfExposure | translate }}</label>
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="nhwTypeOfExposure">
+                      <nb-radio value="Close">{{ t.fb.closeExposure | translate }}</nb-radio>
+                      <nb-radio value="Casual">{{ t.fb.normalExposure | translate }}</nb-radio>
+                      <nb-radio value="High Risk">{{ t.fb.highlyExposed | translate }}</nb-radio>
+                    </nb-radio-group>
                   </div>
                 </div>
-
-
-
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.useOfPPE | translate }}</label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.thahaChhaina | translate }}</nb-radio>
-
-                      </nb-radio-group>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">{{ t.fb.firstContactDate | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">{{ t.fb.lastContactDate | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">कु नैपमनसान्दमभमककु राः </label>
-                    <input type="text" nbInput placeholder="">
-                  </div>
-                </div>
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">राःएक्सपोजरकोआधारमासम्पकम कोवगीकरणः</label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>िोज</nb-radio>
-                        <nb-radio>क्याजुयि </nb-radio>
-
-
-                      </nb-radio-group>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
 
-          <!--part 5-->
-
-          <nb-accordion>
-            <nb-accordion-item>
-              <nb-accordion-item-header>">{{ t.fah.headingb5 | translate }}</nb-accordion-item-header>
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.clinicalInformation | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-
-
-
-
-
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.locationOfContact | translate }}</label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fb.home | translate }}</nb-radio>
-                        <nb-radio>{{ t.fb.transport | translate }} </nb-radio>
-                        <nb-radio>{{ t.fb.school | translate }}</nb-radio>
-                        <nb-radio>{{ t.fb.speechWithPublic | translate }} </nb-radio>
-                        <nb-radio>{{ t.fb.other | translate }}</nb-radio>
-
-
-                      </nb-radio-group>
-                    </div>
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <label class="title">{{ t.fb.currentlySymptomatic | translate }}</label>
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="clinicalInfoSymptomatic">
+                      <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+                      <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+                    </nb-radio-group>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">{{ t.fb.firstContactDate | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <label class="title">({{ t.fb.testForFollowingSymptoms | translate }})</label>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputDate" class="label">">{{ t.fb.lastContactDate | translate }} </label>
-                    <input [nbDatepicker]="datepicker">
-                    <nb-datepicker #datepicker></nb-datepicker> <br />
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <label class="title">{{ t.fb.ifNoSymptoms | translate }}</label>
+                    <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="clinicalInfoSymptomaticAfterExposure">
+                      <nb-radio value="Yes">{{ t.fa.fa11.yesPresent | translate }}</nb-radio>
+                      <nb-radio value="No">{{ t.fa.fa11.noPresent | translate }}</nb-radio>
+                    </nb-radio-group>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="inputFirstName" class="label">कु नैपमनसान्दमभमककु राः </label>
-                    <input type="text" nbInput placeholder="">
+                <div class="row">
+                  <label class="title">{{ t.fb.goToFormA | translate }}</label>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 col-lg-12">
+                    <label class="title"><strong>{{ t.fb.preExistingIssues | translate }}</strong></label>
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.typeOfExposure | translate }}</label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fb.closeExposure | translate }}</nb-radio>
-                        <nb-radio>{{ t.fb.normalExposure | translate }}</nb-radio>
-                        <nb-radio>{{ t.fb.highlyExposed | translate }} </nb-radio>
+                <div class="row">
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxPregnant" status="basic"> {{ t.fa.pregnancy | translate }} </nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxRecentMother" status="basic"> {{ t.fa.postpartum | translate }} </nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxHeartDisease" status="basic"> {{ t.fa.heartDisease | translate }} </nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxDiabetes" status="basic"> {{ t.fa.diabetes | translate }} </nb-checkbox>
 
-
-                      </nb-radio-group>
-                    </div>
+                    <nb-checkbox matRipple formControlName="cboxLiverDisease" status="basic"> कलेजोको रोग</nb-checkbox>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxNerveDisease" status="basic"> नसा सम्बन्धी रोग</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxKidneyDisease" status="basic"> मृगौलाको रोगिरु </nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxImmuneDisease" status="basic"> अिोइम्युन रोगिरु </nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxHIV" status="basic"> इम्युनोडेभफभशयन्सी, एच.आईभी सभित</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxUnclear" status="basic"> ु पोर्ण</nb-checkbox>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxMalignancy" status="basic"> Malignancy म्याभलगनेन्शी</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxLungDisease" status="basic">फोक्सोको दीघष रोग/दम/धमनी</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxNoneDisease" status="basic"> कु नै पभन छैन </nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxOtherDisease" status="basic"> Other, specify अन्य, निर्दिष्ट गर्नुहोस्</nb-checkbox>
+                    <input type="text" matInput autocomplete="off" formControlName="cboxOtherDiseaseSpecification">
                   </div>
                 </div>
-
-
-
-
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
 
-          <!--PART 6-->
-
-          <nb-accordion>
-            <nb-accordion-item>
-              <nb-accordion-item-header>{{ t.fah.headingb6 | translate}}</nb-accordion-item-header>
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.actionForContact | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-
-
-
-
-
-
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">{{ t.fb.education | translate}}</label>
-                    <div class="col-sm-6">
-                      <nb-radio-group id="inputCaseStatus" class="row">
-                        <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-                        <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-
-
-                      </nb-radio-group>
-                    </div>
+                <div class="row">
+                  <label class="title"><strong>{{ t.fb.actionTaken | translate }}</strong></label>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <nb-checkbox matRipple formControlName="cboxContactHospitalized" status="basic">{{ t.fb.contactAdmitted | translate }}</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxContactQuarantined" status="basic">{{ t.fb.contactQuarantined | translate }}</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxContactHomeQuarantined" status="basic">{{ t.fb.homeQuarantine | translate }}</nb-checkbox>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <nb-checkbox matRipple formControlName="cboxContactLost" status="basic">{{ t.fb.contactLost | translate }}</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxContactOther2" status="basic">{{ t.fb.otherSpecify | translate }}</nb-checkbox>
+                    <input type="text" matInput autocomplete="off" formControlName="cboxContactOtherSpecification2">
                   </div>
                 </div>
 
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="" class="label">२.२यमदछैनभने, संक्रममतब्यक्तिसंगएक्सपोजरपछीकु
-                      नैपमनकोमभड१९संगसम्बक्तन्धतिक्षणहरुदेिापरेकोछ? </label>
-                      <div class="col-sm-6">
-                        <nb-radio-group id="inputCaseStatus" class="row">
-                          <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-                          <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
+                <hr>
 
+                <div class="row">
+                  <label>{{ t.fb.ifInstitutionalized | translate }}</label>
+                </div>
 
-                        </nb-radio-group>
-                      </div>
-                    </div>
+                <div class="row">
+                  <mat-form-field appearance="fill" class="form-a">
+                    <label class="title">{{ t.fb.institutionName | translate }}</label>
+                    <input matInput formControlName="contactInstitutionName">
+                  </mat-form-field>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.province | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Province"
+                    (selectedChange)="provinceChanged($event)"
+                    formControlName="contactInstitutionProvince"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let province of countryProvinces"
+                      [value]="province"
+                      >{{ province }}</nb-option
+                    >
+                  </nb-select>
                   </div>
 
-                  <h1>यमद२.१वा२.२कोउत्तर‘छ’ छभनेिक्षणमववरणकािामगAफारममाजानुहोस्मकनकीउहाँशंकास्पदके
-                    सहो॰पूवमअवक्तस्थतअवस्थाहरुछोड्नुहोस्॰</h1>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="" class="label">पूर्ाअर्क्लथिर्अर्थिा(हरु) लाईसम्पकागननाहोस् </label>
-                        <div class="col-sm-12">
-                          <nb-card>
-                            <nb-card-body class="example-items-rows">
-                              <nb-checkbox status="basic"> गभामवस्था(त्रैमामसक </nb-checkbox>
-                              <nb-checkbox status="basic"> सुत्के री( ६हप्ता </nb-checkbox>
-                              <nb-checkbox status="basic"> अटोइम्युनरोगहरु </nb-checkbox>
-                              <nb-checkbox status="basic"> मुटुरोग, उच्चरिचापसमहत </nb-checkbox>
-                              <nb-checkbox status="basic"> कु पोषण</nb-checkbox>
-                              <nb-checkbox status="basic"> इम्युनोडेमफमशयन्सी, एच.आईभीसमहत </nb-checkbox>
-                              <nb-checkbox status="basic"> मधुमेह</nb-checkbox>
-                              <nb-checkbox status="basic"> म्यामिगनेन्सी</nb-checkbox>
-                              <nb-checkbox status="basic"> किेजोकोरोग</nb-checkbox>
-                              <nb-checkbox status="basic"> अन्य(िुिाउनुहोस्)
-                              </nb-checkbox>
-                              <nb-checkbox status="basic"> नशाकोरोग </nb-checkbox>
-                              <nb-checkbox status="basic"> रेनिरोग</nb-checkbox>
-                              <nb-checkbox status="basic"> कु नैपमनहोइन
-                              </nb-checkbox>
-                              <nb-checkbox status="basic"> दीघमकािीनफोक्सोकोरोगवादम </nb-checkbox>
-
-                            </nb-card-body>
-                          </nb-card>
-
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-
-                  </nb-accordion-item-body>
-                </nb-accordion-item>
-              </nb-accordion>
-
-
-
-              <!--PART 7-->
-
-              <nb-accordion>
-                <nb-accordion-item>
-                  <nb-accordion-item-header>{{ t.fah.headingb7 | translate}}</nb-accordion-item-header>
-                  <nb-accordion-item-body>
-
-
-
-
-
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="" class="label">लइएकोदनर्ायः</label>
-                        <div class="col-sm-6">
-                          <nb-radio-group id="inputCaseStatus" class="row">
-                            <nb-radio>कन्ट्याक्टअस्पतािमाभनामगररयो</nb-radio>
-                            <nb-radio>कन्ट्याक्टिस्टः </nb-radio>
-                            <nb-radio> क्वारेक्तिनमारेफरगररयो</nb-radio>
-                            <nb-radio>होमक्वारेक्तिन </nb-radio>
-                            <nb-radio>अन्य</nb-radio>
-
-
-                          </nb-radio-group>
-                        </div>
-                      </div>
-                    </div>
-
-                    <h1>यमदअस्पतािवाक्वारेक्तिनमारेफरगररएकोभएःअस्पतािवाक्वारेक्तिनसेिरकोनामः</h1>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.address | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">मजल्ाः </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.province | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.municipality | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.wardNum | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-
-
-
-
-
-                  </nb-accordion-item-body>
-                </nb-accordion-item>
-              </nb-accordion>
-
-
-
-
-
-
-              <!--part 8-->
-
-              <nb-accordion>
-                <nb-accordion-item>
-                  <nb-accordion-item-header>{{ t.fah.headingb8 | translate }}</nb-accordion-item-header>
-                  <nb-accordion-item-body>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="" class="label">{{ t.fb.contactCheckup | translate }} </label>
-                        <div class="col-sm-6">
-                          <nb-radio-group id="inputCaseStatus" class="row">
-                            <nb-radio>{{ t.fab.chha | translate }}</nb-radio>
-                            <nb-radio>{{ t.fab.chhaina | translate }}</nb-radio>
-
-
-
-                          </nb-radio-group>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="" class="label">यमदछभने, परीक्षणकोप्रकारः </label>
-                        <div class="col-sm-6">
-                          <nb-radio-group id="inputCaseStatus" class="row">
-                            <nb-radio>RT-PCR </nb-radio>
-                            <nb-radio>RDT-Antibody test</nb-radio>
-                            <nb-radio>अन्य</nb-radio>
-                          </nb-radio-group>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputDate" class="label">अन्ययमदछभने, जाँचगरेकोममती(मदन/ममहना/वषम) </label>
-                        <input [nbDatepicker]="datepicker">
-                        <nb-datepicker #datepicker></nb-datepicker> <br />
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="" class="label">पररणामः </label>
-                        <div class="col-sm-6">
-                          <nb-radio-group id="inputCaseStatus" class="row">
-                            <nb-radio>पोजेमटभ </nb-radio>
-                            <nb-radio>नेगेमटभ</nb-radio>
-                            <nb-radio>थाहाछैन९</nb-radio>
-                          </nb-radio-group>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-                  </nb-accordion-item-body>
-                </nb-accordion-item>
-              </nb-accordion>
-
-
-              <!--part 9-->
-
-              <nb-accordion>
-                <nb-accordion-item>
-                  <nb-accordion-item-header>{{ t.fah.headingb9 | translate }}</nb-accordion-item-header>
-                  <nb-accordion-item-body>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="" class="label">फारमपूराभयो </label>
-                        <div class="col-sm-6">
-                          <nb-radio-group id="inputCaseStatus" class="row">
-                            <nb-radio>कन्ट्याक्टमडस्पोज्ड(िक्षणहरुदेक्तिएन)</nb-radio>
-                            <nb-radio>िक्षणहरुदेक्तियोरअनुसन्धानगररयो</nb-radio>
-                            <nb-radio>के सपुमष्ट्भयो</nb-radio>
-                            <nb-radio>कन्ट्याक्टकोमृत्यु</nb-radio>
-                            <nb-radio>कन्ट्याक्टिस्ट/थाहाछैन</nb-radio>
-
-
-                          </nb-radio-group>
-                        </div>
-                      </div>
-                    </div>
-
-                  </nb-accordion-item-body>
-                </nb-accordion-item>
-              </nb-accordion>
-
-              <!--PART 10-->
-              <nb-accordion>
-                <nb-accordion-item>
-                  <nb-accordion-item-header> {{ t.fah.headingb10 | translate }}</nb-accordion-item-header>
-                  <nb-accordion-item-body>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label"> {{ t.fb.contactName | translate }}</label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.organization | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputDate" class="label">{{ t.fb.contactAge | translate }} </label>
-                        <input [nbDatepicker]="datepicker">
-                        <nb-datepicker #datepicker></nb-datepicker> <br />
-                      </div>
-                    </div>
-
-
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fb.phoneNumber | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="inputFirstName" class="label">{{ t.fab.email | translate }} </label>
-                        <input type="text" nbInput placeholder="">
-                      </div>
-                    </div>
-
-                  </nb-accordion-item-body>
-                </nb-accordion-item>
-              </nb-accordion>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </nb-card-body>
-          </nb-card>
-        </nb-layout-column>
-
-        <nb-layout-footer>Form B2: Contact follow-up reporting form –for close contactsof confirmed cases(Day 14–21
-        </nb-layout-footer>
-      </nb-layout>
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.district | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select District"
+                    (selectedChange)="districtChanged($event)"
+                    formControlName="contactInstitutionDistrict"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let district of districts"
+                      [value]="district"
+                      >{{ district }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.municipality | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Municipality"
+                    (selectedChange)="municipChanged($event)"
+                    formControlName="contactInstitutionMunicipal"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let municipality of municipals"
+                      [value]="municipality"
+                      >{{ municipality }}</nb-option
+                    >
+                  </nb-select>
+
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.wardNum | translate }} </mat-label>
+                      <nb-select
+                      matRipple
+                      id="inputCountry"
+                      fullWidth
+                      placeholder="Select Ward"
+                      formControlName="contactInstitutionWard"
+                    >
+                      <nb-option
+                        matRipple
+                        *ngFor="let ward of wards"
+                        [value]="ward"
+                        >{{ ward }}</nb-option
+                      >
+                    </nb-select>
+                  </div>
+                </div>
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+          </nb-accordion>
+
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.contactTestState | translate }} </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+          </nb-accordion>
+
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.followUpInfo | translate }} </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+          </nb-accordion>
+
+          <nb-accordion [multi]="true" class="no-pad">
+            <nb-accordion-item [expanded]="true">
+              <nb-accordion-item-header> {{ t.fb.statCollecterInfo | translate }} </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+          </nb-accordion>
+        </form>
+        <div class="row">
+          <div class="col-md-2 offset-5">
+            <button class="btn" (click)="saveFormB1()">Save Form B1</button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

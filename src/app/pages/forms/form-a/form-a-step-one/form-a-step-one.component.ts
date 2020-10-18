@@ -19,7 +19,7 @@ export class FormAStepOneComponent implements OnInit {
       this.formAService.newFormFlag$.subscribe(flag => {
         if (flag) {
           console.log('STEP 1: prepare data instruction received');
-          this.formAService.aggregateFormData(this.form);
+          this.formAService.aggregateFormData(this.form, this.form.value.name);
         }
       });
     }

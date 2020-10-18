@@ -14,6 +14,8 @@ export class FormAService {
   private formsResponded = 0;
   private fullDataObject = {};
   private contacts: Object[];
+  private caseName: string;
+  private caseId: string;
 
   constructor(
     private formDataService: FormADataService,
@@ -26,11 +28,15 @@ export class FormAService {
     this.newFormFlag$.next(true);
   }
 
-  aggregateFormData(formGroup: FormGroup) {
+  aggregateFormData(formGroup: FormGroup, caseName?: string, caseId?: string) {
     this.formsResponded += 1;
     this.fullDataObject = {...this.fullDataObject, ...formGroup.value};
 
-    console.log(this.fullDataObject);
+    // console.log(formGroup);
+
+    // console.log(this.fullDataObject);
+    if (caseName != undefined) this.caseName = caseName;
+    if (caseId != undefined) this.caseId = caseId;
 
     if (this.formsResponded == 12) {
       this.formDataService.addAll(
@@ -38,7 +44,7 @@ export class FormAService {
         this.formsResponded = 0;
 
         if (result[0].id) {
-          this.createContactTracingEntry(result[0].id, formGroup.value.caseId);
+          this.createContactTracingEntry(result[0].id);
         }
       })
     }
@@ -51,15 +57,17 @@ export class FormAService {
     });
   }
 
-  createContactTracingEntry(formId: string, caseId: string) {
+  createContactTracingEntry(formId: string) {
     console.log('new contact tracing stuff!');
     let addData = [];
+    console.log(this.caseId, this.caseName);
     this.contacts.map(contact => {
       addData.push({
+        ...contact,
         form_id: formId,
-        case_id: caseId,
+        caseId: this.caseId,
+        caseName: this.caseName,
         creationDate: new Date(),
-        ...contact
       })
     });
 

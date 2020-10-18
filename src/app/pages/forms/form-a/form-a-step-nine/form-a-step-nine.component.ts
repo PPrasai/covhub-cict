@@ -33,6 +33,7 @@ export class FormAStepNineComponent implements OnInit {
 
   contacts: FormACTData[] = [{
     caseId: "none",
+    caseName: "",
     sno: "",
     fname: "",
     lname: "",
@@ -43,7 +44,8 @@ export class FormAStepNineComponent implements OnInit {
     lastContactDate: null,
     contactType: null,
     contactAddress: "",
-    contactPhone: 0
+    contactPhone: 0,
+    creationDate: new Date(),
   }];
 
   contactsFG: FormGroup[];
@@ -56,6 +58,7 @@ export class FormAStepNineComponent implements OnInit {
           this.contactsFG = this.contacts.map(contact => {
             return new FormGroup({
               caseId: new FormControl(contact.caseId),
+              caseName: new FormControl(contact.caseName),
               sno: new FormControl(contact.sno),
               fname: new FormControl(contact.fname),
               lname: new FormControl(contact.lname),
@@ -67,6 +70,7 @@ export class FormAStepNineComponent implements OnInit {
               contactType: new FormControl(contact.contactType),
               contactAddress: new FormControl(contact.contactAddress),
               contactPhone: new FormControl(contact.contactPhone),
+              creationDate: new FormControl(Date()),
             });
           });
 
@@ -83,6 +87,7 @@ export class FormAStepNineComponent implements OnInit {
   addContact(event): void {
     this.contacts.unshift({
       caseId: "none",
+      caseName: "",
       sno: "",
       fname: "",
       lname: "",
@@ -93,7 +98,8 @@ export class FormAStepNineComponent implements OnInit {
       lastContactDate: null,
       contactType: null,
       contactAddress: "",
-      contactPhone: 0
+      contactPhone: 0,
+      creationDate: new Date(),
     });
   }
 

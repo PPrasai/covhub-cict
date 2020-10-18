@@ -15,6 +15,7 @@ export enum FormACTDataContactIntimacy {
 
 export interface FormACTData {
   caseId?: string,
+  caseName: string,
   sno: string,
   fname: string,
   lname: string,
@@ -25,5 +26,11 @@ export interface FormACTData {
   lastContactDate: Date,
   contactType: FormACTDataContactIntimacy,
   contactAddress: string,
-  contactPhone: number
+  contactPhone: number,
+  creationDate: Date,
+  fuDate1?: Date,
+  fuDate2?: Date,
+  fuDate3?: Date,
+  fuDate4?: Date,
+  fuDate5?: Date,
 }
