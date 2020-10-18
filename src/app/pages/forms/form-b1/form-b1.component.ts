@@ -130,6 +130,19 @@ export class FormB1Component implements OnInit {
     cboxOtherDisease: new FormControl(false),
 
     cboxOtherDiseaseSpecification: new FormControl(''),
+    cboxContactHospitalized: new FormControl(false),
+    cboxContactQuarantined: new FormControl(false),
+    cboxContactHomeQuarantined: new FormControl(false),
+    cboxContactLost: new FormControl(false),
+    cboxContactOther2: new FormControl(false),
+    cboxContactOtherSpecification2: new FormControl(''),
+
+    contactInstitutionName: new FormControl(''),
+    contactInstitutionProvince: new FormControl(''),
+    contactInstitutionDistrict: new FormControl(''),
+    contactInstitutionMunicipal: new FormControl(''),
+    contactInstitutionWard: new FormControl(0),
+    contactInstitutionAddress: new FormControl(''),
   });
 
   constructor(

@@ -200,6 +200,15 @@
   },
 
     "fb": {
+    "actionTaken": "लिइएको निर्णय:",
+    "contactAdmitted": "कन्ट्याक्ट अस्पतालमा भर्ना गरियो",
+    "contactQuarantined": "क्वारेनटाइनमा रेफर गरियो",
+    "homeQuarantine": "होम क्वारेनटाइन",
+    "contactLost": "कन्ट्याक्ट लस्ट",
+    "otherSpecify": "अन्य (खुलाउनुहोस्)",
+    "ifInstitutionalized": "यदी अस्पताल वा क्वारेनटाइनमा रेफेर गरिएको भए:",
+    "institutionName": "अस्पताल/क्वारेनटाइन सेन्टरको नाम",
+
     "nextSectionNote": "अर्को २ सेक्सनहरुको लागी नोट",
     "ifHealthWorkerGoto4": "यदी कन्ट्याक्ट स्वास्थकर्मी हो भने सेक्सन ४ मा जानुहोस",
     "ifNotHealthWorkerGoto5": "यदी कन्ट्याक्ट स्वास्थकर्मी हैनभने सेक्सन ५ मा जानुहोस",

@@ -712,7 +712,115 @@
             <nb-accordion-item [expanded]="true">
               <nb-accordion-item-header> {{ t.fb.actionForContact | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+                <div class="row">
+                  <label class="title"><strong>{{ t.fb.actionTaken | translate }}</strong></label>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <nb-checkbox matRipple formControlName="cboxContactHospitalized" status="basic">{{ t.fb.contactAdmitted | translate }}</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxContactQuarantined" status="basic">{{ t.fb.contactQuarantined | translate }}</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxContactHomeQuarantined" status="basic">{{ t.fb.homeQuarantine | translate }}</nb-checkbox>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <nb-checkbox matRipple formControlName="cboxContactLost" status="basic">{{ t.fb.contactLost | translate }}</nb-checkbox>
+                    <nb-checkbox matRipple formControlName="cboxContactOther2" status="basic">{{ t.fb.otherSpecify | translate }}</nb-checkbox>
+                    <input type="text" matInput autocomplete="off" formControlName="cboxContactOtherSpecification2">
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                  <label>{{ t.fb.ifInstitutionalized | translate }}</label>
+                </div>
+
+                <div class="row">
+                  <mat-form-field appearance="fill" class="form-a">
+                    <label class="title">{{ t.fb.institutionName | translate }}</label>
+                    <input matInput formControlName="contactInstitutionName">
+                  </mat-form-field>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.province | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Province"
+                    (selectedChange)="provinceChanged($event)"
+                    formControlName="contactInstitutionProvince"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let province of countryProvinces"
+                      [value]="province"
+                      >{{ province }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.district | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select District"
+                    (selectedChange)="districtChanged($event)"
+                    formControlName="contactInstitutionDistrict"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let district of districts"
+                      [value]="district"
+                      >{{ district }}</nb-option
+                    >
+                  </nb-select>
+                  </div>
+
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.municipality | translate }} </mat-label>
+                    <nb-select
+                    matRipple
+                    id="inputCountry"
+                    fullWidth
+                    placeholder="Select Municipality"
+                    (selectedChange)="municipChanged($event)"
+                    formControlName="contactInstitutionMunicipal"
+                  >
+                    <nb-option
+                      matRipple
+                      *ngFor="let municipality of municipals"
+                      [value]="municipality"
+                      >{{ municipality }}</nb-option
+                    >
+                  </nb-select>
+
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-label>{{ t.fa.wardNum | translate }} </mat-label>
+                      <nb-select
+                      matRipple
+                      id="inputCountry"
+                      fullWidth
+                      placeholder="Select Ward"
+                      formControlName="contactInstitutionWard"
+                    >
+                      <nb-option
+                        matRipple
+                        *ngFor="let ward of wards"
+                        [value]="ward"
+                        >{{ ward }}</nb-option
+                      >
+                    </nb-select>
+                  </div>
+                </div>
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>

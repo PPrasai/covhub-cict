@@ -44,7 +44,8 @@ export class FormAStepNineComponent implements OnInit {
     lastContactDate: null,
     contactType: null,
     contactAddress: "",
-    contactPhone: 0
+    contactPhone: 0,
+    creationDate: new Date(),
   }];
 
   contactsFG: FormGroup[];
@@ -69,6 +70,7 @@ export class FormAStepNineComponent implements OnInit {
               contactType: new FormControl(contact.contactType),
               contactAddress: new FormControl(contact.contactAddress),
               contactPhone: new FormControl(contact.contactPhone),
+              creationDate: new FormControl(Date()),
             });
           });
 
@@ -96,7 +98,8 @@ export class FormAStepNineComponent implements OnInit {
       lastContactDate: null,
       contactType: null,
       contactAddress: "",
-      contactPhone: 0
+      contactPhone: 0,
+      creationDate: new Date(),
     });
   }
 
