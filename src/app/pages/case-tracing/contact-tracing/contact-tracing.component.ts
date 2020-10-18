@@ -55,29 +55,24 @@ export class ContactTracingComponent implements OnInit, OnDestroy {
           }
 
           d.fuDate1 = new Date(new Date().setDate(crDate));
-          console.log(d.fuDate1, new Date(), isToday(d.fuDate1));
           this.firstFollowupDay = isToday(d.fuDate1) ;
 
           d.fuDate2 = new Date(new Date().setDate(crDate + 2));
-          console.log(d.fuDate2, new Date(), isToday(d.fuDate2));
           this.secondFollowupDay = isToday(d.fuDate2) ;
 
           d.fuDate3 = new Date(new Date().setDate(crDate + 4));
-          console.log(d.fuDate3, new Date(), isToday(d.fuDate3));
           this.thirdFollowupDay = isToday(d.fuDate3) ;
 
           d.fuDate4 = new Date(new Date().setDate(crDate + 6));
-          console.log(d.fuDate4, new Date(), isToday(d.fuDate4));
           this.forthFollowupDay = isToday(d.fuDate4) ;
 
           d.fuDate5 = new Date(new Date().setDate(crDate + 8));
-          console.log(d.fuDate5, new Date(), isToday(d.fuDate5));
           this.fifthFollowupDay = isToday(d.fuDate5) ;
         });
 
         this.data = data;
         // this.displayedColumns = Object.keys(data[0]);
-        this.displayedColumns = ['contact_name', 'fuDate1', 'fuDate2', 'fuDate3', 'fuDate4', 'fuDate5', 'case'];
+        this.displayedColumns = ['contact_name', 'followup', 'fuDate1', 'fuDate2', 'fuDate3', 'fuDate4', 'fuDate5', 'case'];
       }
     });
   }
