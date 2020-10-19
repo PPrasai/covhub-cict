@@ -143,6 +143,31 @@ export class FormB1Component implements OnInit {
     contactInstitutionMunicipal: new FormControl(''),
     contactInstitutionWard: new FormControl(0),
     contactInstitutionAddress: new FormControl(''),
+
+    cboxContactHasBeenTested: new FormControl(false),
+    cboxContactHasNotBeenTested: new FormControl(false),
+
+    cboxTestTypeRTPCR: new FormControl(false),
+    cboxTestTypeRDTAntibody: new FormControl(false),
+    cboxTestTypeOther: new FormControl(false),
+
+    contactTestDate: new FormControl(''),
+
+    contactTestResultPositive: new FormControl(false),
+    contactTestResultNegative: new FormControl(false),
+    contactTestResultUnknown: new FormControl(false),
+
+    formCompleteContactDisposed: new FormControl(false),
+    formCompleteInvestigatedSymptoms: new FormControl(false),
+    formCompleteCaseConfirmed: new FormControl(false),
+    formCompleteContactDead: new FormControl(false),
+    formCompleteContactLostDontKnow: new FormControl(false),
+
+    formUserName: new FormControl(''),
+    formUserOrganization: new FormControl(''),
+    formUserPhone: new FormControl(''),
+    formUserEmail: new FormControl(''),
+    formCompleteDate: new FormControl(''),
   });
 
   constructor(

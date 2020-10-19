@@ -4,8 +4,8 @@
       <nb-card-header class="form-title"> {{ t.fb.formName | translate }}</nb-card-header>
       <nb-card-body class="no-pad">
         <form [formGroup]="form">
-          <p>caseko naam {{ caseInfo.caseName }}</p>
-          <p>contactko naam {{ caseInfo.fname + ' ' + caseInfo.lname }}</p>
+          <p>{{ t.fc.caseName | translate }} {{ caseInfo.caseName }}</p>
+          <p>{{ t.fb.contactsName | translate }} {{ caseInfo.fname + ' ' + caseInfo.lname }}</p>
 
           <nb-accordion [multi]="true" class="no-pad">
             <nb-accordion-item [expanded]="true">
@@ -14,19 +14,19 @@
                 <div class="row">
                   <div class="col-md-4 col-lg-4">
                     <mat-form-field appearance="fill" class="form-a">
-                      <label class="title">naam</label>
+                      <label class="title">{{ t.fab.naam | translate }}</label>
                       <input matInput autocomplete="off" formControlName="contactName">
                     </mat-form-field>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <mat-form-field appearance="fill" class="form-a">
-                      <label class="title">case sanga ko sambandha</label>
+                      <label class="title">{{ t.fb.caseRelation | translate }}</label>
                       <input matInput autocomplete="off" formControlName="caseRelation">
                     </mat-form-field>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <mat-form-field appearance="fill" class="form-a">
-                      <label class="title">janma miti/umer</label>
+                      <label class="title">{{ t.fb.contactAge | translate }}</label>
                       <input matInput autocomplete="off" formControlName="contactAge">
                     </mat-form-field>
                   </div>
@@ -34,7 +34,7 @@
 
                 <div class="row">
                   <div class="col-md-4 col-lg-4">
-                    <label class="title">linga</label>
+                    <label class="title">{{ t.fb.gender | translate }}</label>
 
                     <nb-radio-group id="inputCaseStatus" name="contactGender" class="row" formControlName="contactGender">
                       <nb-radio value="Male">{{ t.fb.male | translate }}</nb-radio>
@@ -44,13 +44,13 @@
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <mat-form-field appearance="fill" class="form-a">
-                      <label class="title">dharma</label>
+                      <label class="title">{{ t.fb.religion | translate }}</label>
                       <input matInput autocomplete="off" formControlName="contactReligion">
                     </mat-form-field>
                   </div>
                   <div class="col-md-4 col-lg-4">
                     <mat-form-field appearance="fill" class="form-a">
-                      <label class="title">jaat</label>
+                      <label class="title">{{ t.fb.caste | translate }}</label>
                       <input matInput autocomplete="off" formControlName="contactCaste">
                     </mat-form-field>
                   </div>
@@ -829,7 +829,65 @@
             <nb-accordion-item [expanded]="true">
               <nb-accordion-item-header> {{ t.fb.contactTestState | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+                <div class="row">
+                  <label class="title">{{ t.fb.hasContactBeenTested | translate }}</label>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxContactHasBeenTested" status="basic">{{ t.fa.fa11.yesPresent | translate }}</nb-checkbox>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxContactHasNotBeenTested" status="basic">{{ t.fa.fa11.noPresent | translate }}</nb-checkbox>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                  <label class="title">{{ t.fb.ifYesTestType | translate }}</label>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxTestTypeRTPCR" status="basic">RT-PCR</nb-checkbox>
+                  </div>
+                  <div class="col-md-3 col-lg-3">
+                    <nb-checkbox matRipple formControlName="cboxTestTypeRDTAntibody" status="basic">RDT-Antibody test</nb-checkbox>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="cboxTestTypeOther" status="basic">{{ t.fc.other | translate }}</nb-checkbox>
+                  </div>
+                </div>
+
+                <!-- <div class="row" style="margin-top: 15px;">
+                  <div class="col-md-4 col-lg-4">
+
+                  </div>
+                </div> -->
+
+                <div class="row">
+                  <div class="col-md-4 col-lg-4">
+                    <mat-form-field appearance="fill" class="form-a">
+                      <label class="title">{{ t.fb.ifYesTestDate | translate }}</label>
+                      <input type="text" matInput autocomplete="off" formControlName="contactTestDate">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px;">
+                  <div class="col-md-3 col-lg-3">
+                    <label class="title">{{ t.fb.ifYesTestResult | translate }}</label>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="contactTestResultPositive" status="basic">{{ t.fa.fa11.positive | translate }}</nb-checkbox>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="contactTestResultNegative" status="basic">{{ t.fa.fa11.negative | translate }}</nb-checkbox>
+                  </div>
+                  <div class="col-md-2 col-lg-2">
+                    <nb-checkbox matRipple formControlName="contactTestResultUnknown" status="basic">{{ t.fa.fa11.dontKnowPresent | translate }}</nb-checkbox>
+                  </div>
+                </div>
+
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
@@ -838,7 +896,28 @@
             <nb-accordion-item [expanded]="true">
               <nb-accordion-item-header> {{ t.fb.followUpInfo | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+                <div class="row">
+                  <div class="col-md-3 col-lg-3">
+                    <label class="title">{{ t.fb.formFinished | translate }}</label>
+                  </div>
+                  <div class="col-md-4 col-lg-4">
+                    <div class="row">
+                      <nb-checkbox matRipple formControlName="formCompleteContactDisposed" status="basic">{{ t.fb.contactDisposed | translate }}</nb-checkbox>
+                    </div>
+                    <div class="row">
+                      <nb-checkbox matRipple formControlName="formCompleteInvestigatedSymptoms" status="basic">{{ t.fb.investigatedSymptoms | translate }}</nb-checkbox>
+                    </div>
+                    <div class="row">
+                      <nb-checkbox matRipple formControlName="formCompleteCaseConfirmed" status="basic">{{ t.fb.caseConfirmed | translate }}</nb-checkbox>
+                    </div>
+                    <div class="row">
+                      <nb-checkbox matRipple formControlName="formCompleteContactDead" status="basic">{{ t.fb.contactDead | translate }}</nb-checkbox>
+                    </div>
+                    <div class="row">
+                      <nb-checkbox matRipple formControlName="formCompleteContactLostDontKnow" status="basic">{{ t.fb.contactLostDontKnow | translate }}</nb-checkbox>
+                    </div>
+                  </div>
+                </div>
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
@@ -847,7 +926,32 @@
             <nb-accordion-item [expanded]="true">
               <nb-accordion-item-header> {{ t.fb.statCollecterInfo | translate }} </nb-accordion-item-header>
               <nb-accordion-item-body>
-                <!-- <cov-form-a-step-o></cov-form-a-step-o> -->
+
+                <mat-form-field appearance="fill" class="form-a">
+                  <mat-label>{{ t.fa.fname | translate }}</mat-label>
+                  <input type="text" matInput autocomplete="off" formControlName="formUserName">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="form-a">
+                  <mat-label>{{ t.fb.organization | translate }}</mat-label>
+                  <input type="text" matInput autocomplete="off" formControlName="formUserOrganization">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="form-a">
+                  <mat-label>{{ t.fa.phoneNumber | translate }}</mat-label>
+                  <input type="text" matInput autocomplete="off" formControlName="formUserPhone">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="form-a">
+                  <mat-label>{{ t.fab.email | translate }}</mat-label>
+                  <input type="text" matInput autocomplete="off" formControlName="formUserEmail">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="form-a">
+                  <mat-label>{{ t.fb.formCompleteDate | translate }}</mat-label>
+                  <input type="text" matInput autocomplete="off" formControlName="formCompleteDate">
+                </mat-form-field>
+
               </nb-accordion-item-body>
             </nb-accordion-item>
           </nb-accordion>
