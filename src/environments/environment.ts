@@ -12,7 +12,7 @@ import { appUris } from './apiConf';
 import { UriConf, DBConf } from './env.types';
 
 export const environment = {
-  production: false,
+  production: true,
 };
 
 export class AppConf {
