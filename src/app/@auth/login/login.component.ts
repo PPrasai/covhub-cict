@@ -52,8 +52,10 @@ export class LoginComponent extends NbLoginComponent implements OnInit {
 
   login() {
     const { email, password } = this.user;
+    console.log(`logging in with email ${email} and password ${password}`);
     this.authService.login(email, password)
       .subscribe((val: BasicAuth.Response) => {
+        console.log(`auth response received ${val}`);
         if (BasicAuth.isSuccess(val)) {
           this.router.navigateByUrl(this.returnUrl);
         } else {

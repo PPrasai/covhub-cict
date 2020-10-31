@@ -24,7 +24,14 @@ export class AuthGuard implements CanActivate {
     _: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
+    // this.router.navigate(['auth/login'], {
+    //   queryParams: {
+    //     returnUrl: state?.url || HOME,
+    //   },
+    // });
 
+    // return false;
+    console.log(`in auth guard canActivate with flag ${this.authenticatedFlag}`);
     if (this.authenticatedFlag) {
       return true;
     }

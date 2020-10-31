@@ -30,6 +30,7 @@ import { TablesModule } from './tables/tables.module';
 import { DashboardModule } from '../@comp/dashboard/dashboard.module';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthGuard } from '../@auth/guards/auth.guard';
 
 @NgModule({
   imports: [
@@ -61,6 +62,9 @@ import { TranslateModule } from '@ngx-translate/core';
     NbInputModule
   ],
   declarations: [PagesComponent],
+  providers: [
+    AuthGuard,
+  ]
 })
 export class PagesModule {
 }

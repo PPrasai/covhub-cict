@@ -39,8 +39,7 @@ export class AuthService extends NbAuthService {
     super(tokenService, strategy);
     this.strategies = new NbPasswordAuthStrategy(http, route);
     this.updateUser();
-
-  }
+    }
 
   get isInPublicMode(): boolean { return this.isInPublicModSub.value; }
   set isInPublicMode(v: boolean) { this.isInPublicModSub.next(v); }
@@ -243,6 +242,7 @@ export class AuthService extends NbAuthService {
     password: string,
   ) {
     const base64AuthString = btoa(`${username}:${password}`);
+    console.log(`transformed auth is ${base64AuthString}`);
     return this.http.get<BasicAuth.Response>(this.environment.authUri, {
       headers: {
         Accept: 'application/json',
