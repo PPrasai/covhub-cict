@@ -52,8 +52,11 @@ export class LoginComponent extends NbLoginComponent implements OnInit {
 
   login() {
     const { email, password } = this.user;
-    console.log(`logging in with email ${email} and password ${password}`);
-    this.authService.login(email, password)
+    const un = this.f.username.value;
+    const pw = this.f.password.value;
+
+    console.log(`logging in with email ${un} and password ${pw}`);
+    this.authService.login(un, pw)
       .subscribe((val: BasicAuth.Response) => {
         console.log(`auth response received ${val}`);
         if (BasicAuth.isSuccess(val)) {

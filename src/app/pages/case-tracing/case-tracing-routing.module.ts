@@ -7,13 +7,13 @@ import { PositivesComponent } from './positives/positives.component';
 
 const routes: Routes = [
   {
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     path: '',
     component: PositivesComponent,
   }
   ,
   {
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     path: 'tracing',
     component: CaseTracingComponent,
   }

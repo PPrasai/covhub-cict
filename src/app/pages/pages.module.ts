@@ -63,7 +63,7 @@ import { AuthGuard } from '../@auth/guards/auth.guard';
   ],
   declarations: [PagesComponent],
   providers: [
-    AuthGuard,
+    // AuthGuard,
   ]
 })
 export class PagesModule {

@@ -26,7 +26,7 @@ const routes: Routes = [{
   children: [
     {
       path: 'cases',
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
       loadChildren: caseTracingModule,
     },
     // {
@@ -36,7 +36,7 @@ const routes: Routes = [{
     // },
     {
       path: 'maps',
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
       loadChildren: mapsModule,
     },
     {
@@ -45,12 +45,12 @@ const routes: Routes = [{
     },
     {
       path: 'tables',
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
       loadChildren: tablesModule,
     },
     {
       path: 'profile',
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
       component: ProfileComponent
     },
     {
