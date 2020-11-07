@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
     _: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    if (this.authService.user) {
+    if (this.authService.user != 'null') {
       console.log(`user in localStorage is ${this.authService.user}`);
       return true;
     }

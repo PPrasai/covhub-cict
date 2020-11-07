@@ -18,6 +18,14 @@ export function isHubUser(user: any): user is HubUser {
         .find((uk) => uk === key));
 }
 
+export function makeHubUser(username: string, password: string, role: string): HubUser {
+  return {
+    username: username,
+    password: password,
+    roles: [role]
+  } as HubUser;
+}
+
 export interface HeaderBio extends HubUser {
   picture?: string;
   name?: string;

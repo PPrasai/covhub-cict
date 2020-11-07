@@ -17,7 +17,9 @@ export class RoleAuthsService {
   }
 
   addRoles(roles: string[]) {
-    roles?.forEach((role: string) => this.addRole(IdPrefixService.toColonHyphen(role)));
+    if (roles != null) {
+      roles?.forEach((role: string) => this.addRole(IdPrefixService.toColonHyphen(role)));
+    }
   }
 
   getDashboardAuths(): Observable<unknown> {

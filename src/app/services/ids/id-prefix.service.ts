@@ -9,6 +9,7 @@ export class IdPrefixService {
   constructor() { }
 
   static toColonHyphen(id: string): string {
+    if (id === null) return null;
     return id.replace('_', ':').toString();
   }
 

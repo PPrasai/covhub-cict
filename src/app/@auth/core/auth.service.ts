@@ -6,7 +6,7 @@ import { BehaviorSubject, from, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BasicAuth } from '../../@models/auth-response.model';
 import { CurrentUser } from '../../@models/domain.model';
-import { HubUser, isHubUser } from '../../@models/user.model';
+import { HubUser, isHubUser, makeHubUser } from '../../@models/user.model';
 import { EnvironmentService } from '../../services/env/environment.service';
 import { IdPrefixService } from '../../services/ids/id-prefix.service';
 import { AuthToken } from '../access/token.model';
@@ -23,7 +23,13 @@ export class AuthService extends NbAuthService {
   private pass_: string;
   strategies: NbPasswordAuthStrategy;
 
-  private userSub: BehaviorSubject<HubUser> = new BehaviorSubject<HubUser>(JSON.parse(localStorage.getItem('user')));
+  private userSub: BehaviorSubject<HubUser> = new BehaviorSubject<HubUser>(
+    makeHubUser(
+      localStorage.getItem('user'),
+      localStorage.getItem('pass'),
+      localStorage.getItem('role'),
+    )
+  );
   private authenticatedSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private isInPublicModSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -160,6 +166,7 @@ export class AuthService extends NbAuthService {
   saveToken(user: HubUser) {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('email', this.autoken(user));
+    localStorage.setItem('roles', user.roles.toString());
   }
 
   getCurrentToken(): AuthToken {
@@ -243,8 +250,6 @@ export class AuthService extends NbAuthService {
     password: string,
   ) {
     const base64AuthString = btoa(`${username}:${password}`);
-    console.log(`transformed auth is ${base64AuthString}`);
-    console.log(`for these creds: ${username}:${password}`);
     return this.http.get<BasicAuth.Response>(this.environment.authUri, {
       headers: {
         Accept: 'application/json',
